@@ -9,8 +9,11 @@
 #include "hmi_handler.h"
 #include "firing.h"
 #include "hmi_communication.h"
+#include "capacity_measurement.h"
 uint16_t pid_fine_tune_value=0;
-s_table_typedef current_and_time_values_array[max_no_of_members]={0};
+s_table_typedef hmi_current_time_and_capacity_values_array[hmi_max_no_of_members]={0};
+s_table_typedef sd_card_current_time_and_capacity_values_array[sd_card_max_no_of_members]={0};
+
 uint16_t FINE_TUNE_WANTED_CURRENT=0;
 uint8_t  single_setpoint_flag=0;
 float array_of_currents[no_of_steps]={0};
@@ -21,18 +24,22 @@ float I_fine_tune_total=0;
 extern   uint8_t STEP_STATE_ARRAY[no_of_steps];
 extern   uint16_t AVERAGE_ADC_IN_REEL_UNIT[no_of_channels];
 uint8_t user_defined_process_begining=1;
-uint8_t user_defined_process_ending=max_no_of_members;
+uint8_t sd_card_user_defined_process_begining=1;
+
+uint8_t user_defined_process_ending=hmi_max_no_of_members;
 uint16_t current_setting=0;
 uint8_t multi_set_point_status_flag=stop;
 uint8_t counter_of_no_of_entered_process=0;
 uint8_t UPDATE_FINE_TUNE_OPERATION_IN_AUTO_MODE=0;
 uint8_t mode=manual;
-uint8_t process_begin=0;
-uint8_t process_end=0;
+uint8_t hmi_process_begin=0;
+uint8_t hmi_process_end=0;
+uint8_t sd_card_process_begin=0;
+uint8_t sd_card_process_end=0;
 uint8_t limit_of_end_voltage=0;
 uint8_t minimum_current_limit_flag=0;
-uint8_t hmi_auto_mode_flag=0;
-uint8_t sd_card_auto_mode_flag=0;
+uint8_t auto_mode_data_source=0;
+
 
 //////////////////////////////////////
 extern uint16_t current_setting;
@@ -64,11 +71,11 @@ void calculate_possible_probabilities()
 }
 void initiate_multiset_point_mode()
 { HAL_TIM_PWM_Start(&hal_firing_timer ,FIRING_TIME_CHANNEL);
-		for(int i =0;i<max_no_of_members;i++)
+		for(int i =0;i<hmi_max_no_of_members;i++)
 	{
-  		current_and_time_values_array[i].duration = 1 ;
+  		hmi_current_time_and_capacity_values_array[i].duration = 1 ;
 	}
-	for(int i=hmi_first_duration_address_in_multi_mode;i<(hmi_first_duration_address_in_multi_mode+max_no_of_members);i++)
+	for(int i=hmi_first_duration_address_in_multi_mode;i<(hmi_first_duration_address_in_multi_mode+hmi_max_no_of_members);i++)
 					{
 						SEND_TO_HMI(i,1);
 					}
@@ -84,31 +91,52 @@ void update_operation()
 //  static int32_t prev_time_consumed=0;
 	setpoint_setting=Get_Interval_Currentstatus();
 	
-	if(setpoint_setting.Interval_ID>(process_end-1))
-	{//xx=setpoint_setting.Interval_ID;
-		 SEND_TO_HMI(hmi_time_consumed_address(prev_id),(current_and_time_values_array[prev_id].duration));
-		 flashing_registeration(pointer_to_the_running_process_address(prev_id),cancel_the_address);
-		
-	   multi_set_point_status_flag=stop;
-	}
-	else
+	if (auto_mode_data_source==hmi_auto_mode)
 	{
-	 if(prev_id!=setpoint_setting.Interval_ID)
-	  { 
-			if(prev_id!=-1)
-		 {
-		  SEND_TO_HMI(hmi_time_consumed_address(prev_id),(current_and_time_values_array[prev_id].duration));
-			 flashing_registeration(pointer_to_the_running_process_address(prev_id),cancel_the_address);
-			 
-		 }
-		 flashing_registeration(pointer_to_the_running_process_address(setpoint_setting.Interval_ID),register_the_address);
-		  UPDATE_FINE_TUNE_OPERATION_IN_AUTO_MODE = PUSHED ;
-		  prev_id=setpoint_setting.Interval_ID;
-		  auto_operation(setpoint_setting.Current_Setting);
 			
-	  }
-			SEND_TO_HMI(hmi_time_consumed_address(prev_id),(setpoint_setting.Duration_collapsed));
-  }
+			if(setpoint_setting.Interval_ID>(hmi_process_end-1))
+			{//xx=setpoint_setting.Interval_ID;
+				 SEND_TO_HMI(hmi_time_consumed_address(prev_id),(hmi_current_time_and_capacity_values_array[prev_id].duration));
+				 flashing_registeration(pointer_to_the_running_process_address(prev_id),cancel_the_address);
+				
+				 multi_set_point_status_flag=stop;
+			}
+			else
+			{
+			 if(prev_id!=setpoint_setting.Interval_ID)
+				{ 
+					if(prev_id!=-1)
+					 {
+						SEND_TO_HMI(hmi_time_consumed_address(prev_id),(hmi_current_time_and_capacity_values_array[prev_id].duration));
+						 flashing_registeration(pointer_to_the_running_process_address(prev_id),cancel_the_address);
+							// get capacity value to the completed iteration
+						 hmi_current_time_and_capacity_values_array[prev_id].iteration_capacity=get_capacity_and_stop_calculations();
+							// start capacity calculations for the next iteration
+						 capacity_start_calculations();
+							// send capacity value to the completed iteration
+						SEND_TO_HMI(hmi_capacity_address(prev_id),(hmi_current_time_and_capacity_values_array[prev_id].iteration_capacity));
+						 
+					 }
+					 if(prev_id==-1)
+					 {
+						capacity_start_calculations();
+					 }
+					 flashing_registeration(pointer_to_the_running_process_address(setpoint_setting.Interval_ID),register_the_address);
+						UPDATE_FINE_TUNE_OPERATION_IN_AUTO_MODE = PUSHED ;
+						prev_id=setpoint_setting.Interval_ID;
+						auto_operation(setpoint_setting.Current_Setting);
+						
+				}
+					SEND_TO_HMI(hmi_time_consumed_address(prev_id),(setpoint_setting.Duration_collapsed));
+			}
+		
+	}
+	
+	else if (auto_mode_data_source==sd_card_auto_mode)
+	{
+		
+	}
+
 	
 //	else
 //	{ if(((setpoint_setting.Duration_collapsed%60)==0))
@@ -156,23 +184,32 @@ void calculate_process_begin_end()
 {
 	if(user_defined_process_begining>1)
 					{
-					 process_begin=user_defined_process_begining;
+					 hmi_process_begin=user_defined_process_begining;
 					}
 					else
 					{
-					 process_begin=1;
+					 hmi_process_begin=1;
 					}
 					if(user_defined_process_ending<=counter_of_no_of_entered_process)
 					{
-					 process_end=user_defined_process_ending;
+					 hmi_process_end=user_defined_process_ending;
 					}
 					else
           {
-					 process_end=counter_of_no_of_entered_process;
+					 hmi_process_end=counter_of_no_of_entered_process;
 					}
-					if(process_end<process_begin)
+					if(hmi_process_end<hmi_process_begin)
 					{
-           replace(&process_begin,&process_end);					
+           replace(&hmi_process_begin,&hmi_process_end);					
+					}
+					
+	 if(sd_card_user_defined_process_begining>1)
+					{
+					 sd_card_process_begin=sd_card_user_defined_process_begining;
+					}
+					else
+					{
+					 sd_card_process_begin=1;
 					}
 }
 
@@ -234,7 +271,7 @@ void multi_set_point_operation(void)//each 1 sec
 		    SEND_TO_HMI(PAUSE_MULTI_SETPOINT_ADDRESS,0);
 			}
        UPDATE_FINE_TUNE_OPERATION_IN_AUTO_MODE = 1 ;	
-				for(int i=first_pointer_to_the_running_process_address;i<(first_pointer_to_the_running_process_address+max_no_of_members);i++)
+				for(int i=first_pointer_to_the_running_process_address;i<(first_pointer_to_the_running_process_address+hmi_max_no_of_members);i++)
 					{
 						SEND_TO_HMI(i,0);
 					}
@@ -243,7 +280,7 @@ void multi_set_point_operation(void)//each 1 sec
        mode=Auto;
 					
 					
-	     Start_Operation ((process_begin-1) , (process_end-1),current_and_time_values_array);
+	     Start_Operation ((hmi_process_begin-1) , (hmi_process_end-1),hmi_current_time_and_capacity_values_array);
 			 setpoint_setting=Get_Interval_Currentstatus();
 			 current_setting=setpoint_setting.Current_Setting;
 		 auto_operation(current_setting);

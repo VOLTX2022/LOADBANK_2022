@@ -15,7 +15,7 @@
 #define NULL_ADDRESS 0
 int steps_hmi_addresses_array[no_of_steps]={STEP1_ADDRESS, STEP2_ADDRESS ,STEP3_ADDRESS ,STEP4_ADDRESS ,STEP5_ADDRESS,STEP6_ADDRESS ,STEP7_ADDRESS ,STEP8_ADDRESS};//,FINE_TUNE_ON_OFF_ADDRESS};// ,STEP6_ADDRESS };//,STEP7_ADDRESS ,STEP8_ADDRESS };
 extern uint16_t manual_fine_tune_step_value;
-extern  s_table_typedef current_and_time_values_array[max_no_of_members];
+extern  s_table_typedef hmi_current_time_and_capacity_values_array[hmi_max_no_of_members];
 int16_t displayed_hmi_values[no_of_addresses]={0};//this will make a problem if i want to changge any initiated value from hmi to 0
 
 //#define EMERGENCY_ADDRESS                       0x19
@@ -34,8 +34,9 @@ extern uint8_t mode;
 extern uint8_t UPDATE_FINE_TUNE_OPERATION_IN_AUTO_MODE;
 extern uint8_t STOP_FIXED_STEPS_FLAG;
 extern uint16_t Input_Volt_Limit_Setting;
-extern uint8_t hmi_auto_mode_flag;
-extern uint8_t sd_card_auto_mode_flag;
+extern uint8_t auto_mode_data_source;
+extern uint8_t sd_card_user_defined_process_begining;
+
 uint8_t new_current_unpushed_flag=0;
 
 void HMI_Addresses()
@@ -54,12 +55,12 @@ void HMI_Addresses()
 
   }	
 	
-//	if(((Address>=hmi_current_address(0))&&(Address<=hmi_current_address(max_no_of_members)))||((Address>=hmi_duration_address(0))&&(Address<=hmi_duration_address(max_no_of_members))))
-	{		for(int i =0;i<max_no_of_members;i++)
+//	if(((Address>=hmi_current_address(0))&&(Address<=hmi_current_address(hmi_max_no_of_members)))||((Address>=hmi_duration_address(0))&&(Address<=hmi_duration_address(hmi_max_no_of_members))))
+	{		for(int i =0;i<hmi_max_no_of_members;i++)
 	 {
   		if (Address==hmi_current_address(i))
 	    {
-       	current_and_time_values_array[i].current = check_input_current_limits(Value,Address) ;
+       	hmi_current_time_and_capacity_values_array[i].current = check_input_current_limits(Value,Address) ;
 				if((i+1)>counter_of_no_of_entered_process)
 				{
 					counter_of_no_of_entered_process=(i+1);
@@ -67,7 +68,7 @@ void HMI_Addresses()
 	  	}
 			else if (Address==hmi_duration_address(i))
 	    {
-				current_and_time_values_array[i].duration=Value;
+				hmi_current_time_and_capacity_values_array[i].duration=Value;
 			}
 
    }	
@@ -76,7 +77,7 @@ void HMI_Addresses()
    switch (Address)
    {case Automatic_Mode_Address:
 				 
-		   if(mode ==manual)
+		   if(mode==manual)
 			 {
 				
 						new_current_unpushed_flag=1;    //to send 0 in measurement,send off flashing ,of proceed light 
@@ -86,8 +87,7 @@ void HMI_Addresses()
 				    //send_setting_switch_off_timer_flag=1;
 			 }
 			   //FINE_TUNE_RELAY_ON
-			  hmi_auto_mode_flag=0;
-				sd_card_auto_mode_flag=0;  
+			  auto_mode_data_source=not_selected;
 			  mode=Auto;
 //			 open_circuit_alarm_flag=disappear; 
 //					 input_current_exceed_max_limit_alarm_flag=disappear;
@@ -97,14 +97,14 @@ void HMI_Addresses()
 			 
 		 case insert_data_from_sd_card_in_auto_mode_ADDRESS:
 			 
-				sd_card_auto_mode_flag=1;
+				auto_mode_data_source=sd_card_auto_mode;
 				mode=Auto;
 			 
 			break;
 		 
 		 case insert_data_using_hmi_screen_in_auto_mode_ADDRESS:
 			 
-				hmi_auto_mode_flag=1;
+				auto_mode_data_source=hmi_auto_mode;
 				mode=Auto;
 			 
 			break;
@@ -219,9 +219,15 @@ void HMI_Addresses()
 	case LIMIT_OF_END_VOLTAGE_ADDRESS:
 	  	limit_of_end_voltage=Value;
 		break;
+	
 	case USER_PROCESS_BEGINING_ADDRESS:
 		user_defined_process_begining=Value;
 		break;
+	
+	case sd_card_USER_PROCESS_BEGINING_ADDRESS:
+		sd_card_user_defined_process_begining=Value;
+		break;
+	
 		case USER_PROCESS_ENDING_ADDRESS:
 		user_defined_process_ending=Value;
 		break;

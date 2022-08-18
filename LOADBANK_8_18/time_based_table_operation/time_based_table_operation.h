@@ -49,7 +49,8 @@ typedef struct table
 {
 	uint16_t current;
 	uint16_t duration;
-
+	uint32_t iteration_capacity;
+	uint32_t total_capacity;
 }s_table_typedef ; 
 enum Actions_Statues_Enum{ SET_ID , CONTINUE_PROGRESS , FINISHED , NOTFINISHED };
 /* USER CODE END Private defines */

@@ -38,10 +38,10 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h)(0x5F7B1E40)
 I (../Inc/tim.h)(0x62FB91A6)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x602577D8)
 I (..\time_handler\time_handler.h)(0x62FB92EC)
-I (..\auto_mode\auto_mode.h)(0x62FD0581)
+I (..\auto_mode\auto_mode.h)(0x62FE048F)
 I (..\measurement\measurement.h)(0x62C5819A)
 I (..\configration\configration.h)(0x62FB92EC)
-I (..\hmi_handler\hmi_handler.h)(0x62FD028C)
+I (..\hmi_handler\hmi_handler.h)(0x62FE066E)
 I (..\hmi_communication\hmi_communication.h)(0x619A5332)
 I (..\pid\pid.h)(0x60FFD3F8)
 I (..\firing\firing.h)(0x62C59062)
@@ -81,8 +81,8 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h)(0x5F7B1E40)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h)(0x5F7B1E40)
 I (..\configration\configration.h)(0x62FB92EC)
 I (../Inc/tim.h)(0x62FB91A6)
-F (..\auto_mode\auto_mode.c)(0x62FD028C)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\application -I ..\arrays_calibration_firing -I ..\auto_mode -I ..\configration -I ..\firing -I ..\hmi_communication -I ..\hmi_handler -I ..\measurement -I ..\pid -I ..\pid_handler -I ..\queue_dgus_rx -I ..\time_handler -I ..\measurement_history -I ..\time_based_table_operation -I ..\time_based_table_operation -I ..\feedback_handler -I ..\capacity_measurement -I ..\capacity_measurement -I ..\feedback_handler -I ..\display_iterration -I ..\display_iterration-I.\RTE\_LOADBANK-IC:\Users\Mohy\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mohy\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.1\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F051x8 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F051x8-o loadbank\auto_mode.o --omf_browse loadbank\auto_mode.crf --depend loadbank\auto_mode.d)
-I (..\auto_mode\auto_mode.h)(0x62FD0581)
+F (..\auto_mode\auto_mode.c)(0x62FE2239)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\application -I ..\arrays_calibration_firing -I ..\auto_mode -I ..\configration -I ..\firing -I ..\hmi_communication -I ..\hmi_handler -I ..\measurement -I ..\pid -I ..\pid_handler -I ..\queue_dgus_rx -I ..\time_handler -I ..\measurement_history -I ..\time_based_table_operation -I ..\time_based_table_operation -I ..\feedback_handler -I ..\capacity_measurement -I ..\capacity_measurement -I ..\feedback_handler -I ..\display_iterration -I ..\display_iterration-I.\RTE\_LOADBANK-IC:\Users\Mohy\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mohy\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.1\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F051x8 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F051x8-o loadbank\auto_mode.o --omf_browse loadbank\auto_mode.crf --depend loadbank\auto_mode.d)
+I (..\auto_mode\auto_mode.h)(0x62FE048F)
 I (../Inc/main.h)(0x62FB91A6)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5F7B1E40)
 I (../Inc/stm32f0xx_hal_conf.h)(0x62FB91A6)
@@ -115,15 +115,16 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim.h)(0x5F7B1E40)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h)(0x5F7B1E40)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h)(0x5F7B1E40)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h)(0x5F7B1E40)
-I (..\hmi_handler\hmi_handler.h)(0x62FD028C)
+I (..\hmi_handler\hmi_handler.h)(0x62FE066E)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x602577D8)
 I (..\application\application.h)(0x62C57CB0)
 I (..\firing\firing.h)(0x62C59062)
 I (..\configration\configration.h)(0x62FB92EC)
 I (../Inc/tim.h)(0x62FB91A6)
-I (..\time_based_table_operation\time_based_table_operation.h)(0x62F4EBC6)
+I (..\time_based_table_operation\time_based_table_operation.h)(0x62FE1419)
 I (..\measurement\measurement.h)(0x62C5819A)
 I (..\hmi_communication\hmi_communication.h)(0x619A5332)
+I (..\capacity_measurement\capacity_measurement.h)(0x62FE0CEE)
 F (..\configration\configration.c)(0x605C83C8)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\application -I ..\arrays_calibration_firing -I ..\auto_mode -I ..\configration -I ..\firing -I ..\hmi_communication -I ..\hmi_handler -I ..\measurement -I ..\pid -I ..\pid_handler -I ..\queue_dgus_rx -I ..\time_handler -I ..\measurement_history -I ..\time_based_table_operation -I ..\time_based_table_operation -I ..\feedback_handler -I ..\capacity_measurement -I ..\capacity_measurement -I ..\feedback_handler -I ..\display_iterration -I ..\display_iterration-I.\RTE\_LOADBANK-IC:\Users\Mohy\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mohy\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.1\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F051x8 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F051x8-o loadbank\configration.o --omf_browse loadbank\configration.crf --depend loadbank\configration.d)
 I (..\configration\configration.h)(0x62FB92EC)
 I (../Inc/main.h)(0x62FB91A6)
@@ -194,11 +195,11 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h)(0x5F7B1E40)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h)(0x5F7B1E40)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h)(0x5F7B1E40)
 I (..\pid_handler\pid_handler.h)(0x61D2D6D0)
-I (..\hmi_handler\hmi_handler.h)(0x62FD028C)
+I (..\hmi_handler\hmi_handler.h)(0x62FE066E)
 I (..\measurement\measurement.h)(0x62C5819A)
 I (..\configration\configration.h)(0x62FB92EC)
 I (../Inc/tim.h)(0x62FB91A6)
-I (..\auto_mode\auto_mode.h)(0x62FD0581)
+I (..\auto_mode\auto_mode.h)(0x62FE048F)
 I (..\application\application.h)(0x62C57CB0)
 I (..\hmi_communication\hmi_communication.h)(0x619A5332)
 I (..\pid\pid.h)(0x60FFD3F8)
@@ -238,12 +239,12 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h)(0x5F7B1E40)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h)(0x5F7B1E40)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h)(0x5F7B1E40)
 I (../Inc/usart.h)(0x62FB91A6)
-I (..\hmi_handler\hmi_handler.h)(0x62FD028C)
+I (..\hmi_handler\hmi_handler.h)(0x62FE066E)
 I (..\configration\configration.h)(0x62FB92EC)
 I (../Inc/tim.h)(0x62FB91A6)
 I (..\queue_dgus_rx\queue_dgus_rx.h)(0x62B8219A)
-F (..\hmi_handler\hmi_handler.c)(0x62FD028C)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\application -I ..\arrays_calibration_firing -I ..\auto_mode -I ..\configration -I ..\firing -I ..\hmi_communication -I ..\hmi_handler -I ..\measurement -I ..\pid -I ..\pid_handler -I ..\queue_dgus_rx -I ..\time_handler -I ..\measurement_history -I ..\time_based_table_operation -I ..\time_based_table_operation -I ..\feedback_handler -I ..\capacity_measurement -I ..\capacity_measurement -I ..\feedback_handler -I ..\display_iterration -I ..\display_iterration-I.\RTE\_LOADBANK-IC:\Users\Mohy\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mohy\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.1\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F051x8 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F051x8-o loadbank\hmi_handler.o --omf_browse loadbank\hmi_handler.crf --depend loadbank\hmi_handler.d)
-I (..\hmi_handler\hmi_handler.h)(0x62FD028C)
+F (..\hmi_handler\hmi_handler.c)(0x62FE120C)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\application -I ..\arrays_calibration_firing -I ..\auto_mode -I ..\configration -I ..\firing -I ..\hmi_communication -I ..\hmi_handler -I ..\measurement -I ..\pid -I ..\pid_handler -I ..\queue_dgus_rx -I ..\time_handler -I ..\measurement_history -I ..\time_based_table_operation -I ..\time_based_table_operation -I ..\feedback_handler -I ..\capacity_measurement -I ..\capacity_measurement -I ..\feedback_handler -I ..\display_iterration -I ..\display_iterration-I.\RTE\_LOADBANK-IC:\Users\Mohy\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mohy\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.1\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F051x8 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F051x8-o loadbank\hmi_handler.o --omf_browse loadbank\hmi_handler.crf --depend loadbank\hmi_handler.d)
+I (..\hmi_handler\hmi_handler.h)(0x62FE066E)
 I (../Inc/main.h)(0x62FB91A6)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5F7B1E40)
 I (../Inc/stm32f0xx_hal_conf.h)(0x62FB91A6)
@@ -278,15 +279,15 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h)(0x5F7B1E40)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h)(0x5F7B1E40)
 I (..\hmi_communication\hmi_communication.h)(0x619A5332)
 I (..\measurement_history\measurement_history.h)(0x62B466E8)
-I (..\auto_mode\auto_mode.h)(0x62FD0581)
+I (..\auto_mode\auto_mode.h)(0x62FE048F)
 I (..\measurement\measurement.h)(0x62C5819A)
 I (..\configration\configration.h)(0x62FB92EC)
 I (../Inc/tim.h)(0x62FB91A6)
-I (..\time_based_table_operation\time_based_table_operation.h)(0x62F4EBC6)
+I (..\time_based_table_operation\time_based_table_operation.h)(0x62FE1419)
 I (..\application\application.h)(0x62C57CB0)
 I (..\firing\firing.h)(0x62C59062)
 I (..\time_handler\time_handler.h)(0x62FB92EC)
-F (..\measurement\measurement.c)(0x62F8DCEE)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\application -I ..\arrays_calibration_firing -I ..\auto_mode -I ..\configration -I ..\firing -I ..\hmi_communication -I ..\hmi_handler -I ..\measurement -I ..\pid -I ..\pid_handler -I ..\queue_dgus_rx -I ..\time_handler -I ..\measurement_history -I ..\time_based_table_operation -I ..\time_based_table_operation -I ..\feedback_handler -I ..\capacity_measurement -I ..\capacity_measurement -I ..\feedback_handler -I ..\display_iterration -I ..\display_iterration-I.\RTE\_LOADBANK-IC:\Users\Mohy\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mohy\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.1\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F051x8 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F051x8-o loadbank\measurement.o --omf_browse loadbank\measurement.crf --depend loadbank\measurement.d)
+F (..\measurement\measurement.c)(0x62FE4E04)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\application -I ..\arrays_calibration_firing -I ..\auto_mode -I ..\configration -I ..\firing -I ..\hmi_communication -I ..\hmi_handler -I ..\measurement -I ..\pid -I ..\pid_handler -I ..\queue_dgus_rx -I ..\time_handler -I ..\measurement_history -I ..\time_based_table_operation -I ..\time_based_table_operation -I ..\feedback_handler -I ..\capacity_measurement -I ..\capacity_measurement -I ..\feedback_handler -I ..\display_iterration -I ..\display_iterration-I.\RTE\_LOADBANK-IC:\Users\Mohy\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mohy\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.1\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F051x8 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F051x8-o loadbank\measurement.o --omf_browse loadbank\measurement.crf --depend loadbank\measurement.d)
 I (..\measurement\measurement.h)(0x62C5819A)
 I (../Inc/main.h)(0x62FB91A6)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5F7B1E40)
@@ -325,7 +326,7 @@ I (../Inc/tim.h)(0x62FB91A6)
 I (C:\Keil_v5\ARM\ARMCC\include\math.h)(0x602577D8)
 I (../Inc/adc.h)(0x62FB91A6)
 I (..\firing\firing.h)(0x62C59062)
-I (..\hmi_handler\hmi_handler.h)(0x62FD028C)
+I (..\hmi_handler\hmi_handler.h)(0x62FE066E)
 I (..\application\application.h)(0x62C57CB0)
 I (..\time_handler\time_handler.h)(0x62FB92EC)
 I (..\arrays_calibration_firing\arrays_calibration_firing.h)(0x624A996C)
@@ -400,7 +401,7 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h)(0x5F7B1E40)
 I (..\pid\pid.h)(0x60FFD3F8)
 I (..\configration\configration.h)(0x62FB92EC)
 I (../Inc/tim.h)(0x62FB91A6)
-I (..\hmi_handler\hmi_handler.h)(0x62FD028C)
+I (..\hmi_handler\hmi_handler.h)(0x62FE066E)
 I (..\arrays_calibration_firing\arrays_calibration_firing.h)(0x624A996C)
 F (..\queue_dgus_rx\queue_dgus_rx.c)(0x62BD6D18)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\application -I ..\arrays_calibration_firing -I ..\auto_mode -I ..\configration -I ..\firing -I ..\hmi_communication -I ..\hmi_handler -I ..\measurement -I ..\pid -I ..\pid_handler -I ..\queue_dgus_rx -I ..\time_handler -I ..\measurement_history -I ..\time_based_table_operation -I ..\time_based_table_operation -I ..\feedback_handler -I ..\capacity_measurement -I ..\capacity_measurement -I ..\feedback_handler -I ..\display_iterration -I ..\display_iterration-I.\RTE\_LOADBANK-IC:\Users\Mohy\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mohy\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.1\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F051x8 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F051x8-o loadbank\queue_dgus_rx.o --omf_browse loadbank\queue_dgus_rx.crf --depend loadbank\queue_dgus_rx.d)
 I (..\queue_dgus_rx\queue_dgus_rx.h)(0x62B8219A)
@@ -474,12 +475,12 @@ I (..\firing\firing.h)(0x62C59062)
 I (..\measurement\measurement.h)(0x62C5819A)
 I (..\configration\configration.h)(0x62FB92EC)
 I (../Inc/tim.h)(0x62FB91A6)
-I (..\hmi_handler\hmi_handler.h)(0x62FD028C)
+I (..\hmi_handler\hmi_handler.h)(0x62FE066E)
 I (..\hmi_communication\hmi_communication.h)(0x619A5332)
 I (..\application\application.h)(0x62C57CB0)
 I (..\measurement_history\measurement_history.h)(0x62B466E8)
-I (..\auto_mode\auto_mode.h)(0x62FD0581)
-I (..\time_based_table_operation\time_based_table_operation.h)(0x62F4EBC6)
+I (..\auto_mode\auto_mode.h)(0x62FE048F)
+I (..\time_based_table_operation\time_based_table_operation.h)(0x62FE1419)
 F (..\measurement_history\measurement_history.c)(0x62F5127E)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\application -I ..\arrays_calibration_firing -I ..\auto_mode -I ..\configration -I ..\firing -I ..\hmi_communication -I ..\hmi_handler -I ..\measurement -I ..\pid -I ..\pid_handler -I ..\queue_dgus_rx -I ..\time_handler -I ..\measurement_history -I ..\time_based_table_operation -I ..\time_based_table_operation -I ..\feedback_handler -I ..\capacity_measurement -I ..\capacity_measurement -I ..\feedback_handler -I ..\display_iterration -I ..\display_iterration-I.\RTE\_LOADBANK-IC:\Users\Mohy\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mohy\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.1\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F051x8 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F051x8-o loadbank\measurement_history.o --omf_browse loadbank\measurement_history.crf --depend loadbank\measurement_history.d)
 I (..\measurement_history\measurement_history.h)(0x62B466E8)
 I (../Inc/main.h)(0x62FB91A6)
@@ -515,12 +516,12 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h)(0x5F7B1E40)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h)(0x5F7B1E40)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h)(0x5F7B1E40)
 I (..\hmi_communication\hmi_communication.h)(0x619A5332)
-I (..\hmi_handler\hmi_handler.h)(0x62FD028C)
+I (..\hmi_handler\hmi_handler.h)(0x62FE066E)
 I (..\measurement\measurement.h)(0x62C5819A)
 I (..\configration\configration.h)(0x62FB92EC)
 I (../Inc/tim.h)(0x62FB91A6)
 F (..\time_based_table_operation\time_based_table_operation.c)(0x62FB7CF2)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\application -I ..\arrays_calibration_firing -I ..\auto_mode -I ..\configration -I ..\firing -I ..\hmi_communication -I ..\hmi_handler -I ..\measurement -I ..\pid -I ..\pid_handler -I ..\queue_dgus_rx -I ..\time_handler -I ..\measurement_history -I ..\time_based_table_operation -I ..\time_based_table_operation -I ..\feedback_handler -I ..\capacity_measurement -I ..\capacity_measurement -I ..\feedback_handler -I ..\display_iterration -I ..\display_iterration-I.\RTE\_LOADBANK-IC:\Users\Mohy\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mohy\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.1\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F051x8 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F051x8-o loadbank\time_based_table_operation.o --omf_browse loadbank\time_based_table_operation.crf --depend loadbank\time_based_table_operation.d)
-I (..\time_based_table_operation\time_based_table_operation.h)(0x62F4EBC6)
+I (..\time_based_table_operation\time_based_table_operation.h)(0x62FE1419)
 I (../Inc/main.h)(0x62FB91A6)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5F7B1E40)
 I (../Inc/stm32f0xx_hal_conf.h)(0x62FB91A6)
@@ -555,7 +556,7 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h)(0x5F7B1E40)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h)(0x5F7B1E40)
 F (..\feedback_handler\feedback_handler.c)(0x62F8EE32)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\application -I ..\arrays_calibration_firing -I ..\auto_mode -I ..\configration -I ..\firing -I ..\hmi_communication -I ..\hmi_handler -I ..\measurement -I ..\pid -I ..\pid_handler -I ..\queue_dgus_rx -I ..\time_handler -I ..\measurement_history -I ..\time_based_table_operation -I ..\time_based_table_operation -I ..\feedback_handler -I ..\capacity_measurement -I ..\capacity_measurement -I ..\feedback_handler -I ..\display_iterration -I ..\display_iterration-I.\RTE\_LOADBANK-IC:\Users\Mohy\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mohy\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.1\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F051x8 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F051x8-o loadbank\feedback_handler.o --omf_browse loadbank\feedback_handler.crf --depend loadbank\feedback_handler.d)
 F (..\capacity_measurement\capacity_measurement.c)(0x62FD028C)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\application -I ..\arrays_calibration_firing -I ..\auto_mode -I ..\configration -I ..\firing -I ..\hmi_communication -I ..\hmi_handler -I ..\measurement -I ..\pid -I ..\pid_handler -I ..\queue_dgus_rx -I ..\time_handler -I ..\measurement_history -I ..\time_based_table_operation -I ..\time_based_table_operation -I ..\feedback_handler -I ..\capacity_measurement -I ..\capacity_measurement -I ..\feedback_handler -I ..\display_iterration -I ..\display_iterration-I.\RTE\_LOADBANK-IC:\Users\Mohy\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mohy\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.1\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F051x8 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F051x8-o loadbank\capacity_measurement.o --omf_browse loadbank\capacity_measurement.crf --depend loadbank\capacity_measurement.d)
-I (..\capacity_measurement\capacity_measurement.h)(0x62FD028C)
+I (..\capacity_measurement\capacity_measurement.h)(0x62FE0CEE)
 I (../Inc/main.h)(0x62FB91A6)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5F7B1E40)
 I (../Inc/stm32f0xx_hal_conf.h)(0x62FB91A6)
@@ -625,8 +626,8 @@ I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_tim_ex.h)(0x5F7B1E40)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart.h)(0x5F7B1E40)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal_uart_ex.h)(0x5F7B1E40)
 I (..\hmi_communication\hmi_communication.h)(0x619A5332)
-I (..\hmi_handler\hmi_handler.h)(0x62FD028C)
-I (..\auto_mode\auto_mode.h)(0x62FD0581)
+I (..\hmi_handler\hmi_handler.h)(0x62FE066E)
+I (..\auto_mode\auto_mode.h)(0x62FE048F)
 F (../Src/main.c)(0x62FB91A8)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\application -I ..\arrays_calibration_firing -I ..\auto_mode -I ..\configration -I ..\firing -I ..\hmi_communication -I ..\hmi_handler -I ..\measurement -I ..\pid -I ..\pid_handler -I ..\queue_dgus_rx -I ..\time_handler -I ..\measurement_history -I ..\time_based_table_operation -I ..\time_based_table_operation -I ..\feedback_handler -I ..\capacity_measurement -I ..\capacity_measurement -I ..\feedback_handler -I ..\display_iterration -I ..\display_iterration-I.\RTE\_LOADBANK-IC:\Users\Mohy\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mohy\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.1\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F051x8 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F051x8-o loadbank\main.o --omf_browse loadbank\main.crf --depend loadbank\main.d)
 I (../Inc/main.h)(0x62FB91A6)
 I (../Drivers/STM32F0xx_HAL_Driver/Inc/stm32f0xx_hal.h)(0x5F7B1E40)
@@ -669,8 +670,8 @@ I (..\hmi_communication\hmi_communication.h)(0x619A5332)
 I (..\application\application.h)(0x62C57CB0)
 I (..\measurement\measurement.h)(0x62C5819A)
 I (..\configration\configration.h)(0x62FB92EC)
-I (..\hmi_handler\hmi_handler.h)(0x62FD028C)
-I (..\auto_mode\auto_mode.h)(0x62FD0581)
+I (..\hmi_handler\hmi_handler.h)(0x62FE066E)
+I (..\auto_mode\auto_mode.h)(0x62FE048F)
 F (../Src/gpio.c)(0x62FB91A4)(--c99 -c --cpu Cortex-M0 -D__EVAL -D__MICROLIB -g -O3 --apcs=interwork --split_sections -I ../Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc -I ../Drivers/STM32F0xx_HAL_Driver/Inc/Legacy -I ../Drivers/CMSIS/Device/ST/STM32F0xx/Include -I ../Drivers/CMSIS/Include -I ..\application -I ..\arrays_calibration_firing -I ..\auto_mode -I ..\configration -I ..\firing -I ..\hmi_communication -I ..\hmi_handler -I ..\measurement -I ..\pid -I ..\pid_handler -I ..\queue_dgus_rx -I ..\time_handler -I ..\measurement_history -I ..\time_based_table_operation -I ..\time_based_table_operation -I ..\feedback_handler -I ..\capacity_measurement -I ..\capacity_measurement -I ..\feedback_handler -I ..\display_iterration -I ..\display_iterration-I.\RTE\_LOADBANK-IC:\Users\Mohy\AppData\Local\Arm\Packs\ARM\CMSIS\5.8.0\CMSIS\Core\Include-IC:\Users\Mohy\AppData\Local\Arm\Packs\Keil\STM32F0xx_DFP\2.1.1\Drivers\CMSIS\Device\ST\STM32F0xx\Include-D__UVISION_VERSION="536" -D_RTE_ -DSTM32F051x8 -D_RTE_ -DUSE_HAL_DRIVER -DSTM32F051x8-o loadbank\gpio.o --omf_browse loadbank\gpio.crf --depend loadbank\gpio.d)
 I (../Inc/gpio.h)(0x62FB91A4)
 I (../Inc/main.h)(0x62FB91A6)

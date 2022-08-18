@@ -42,3 +42,4 @@ loadbank\auto_mode.o: ../Inc/tim.h
 loadbank\auto_mode.o: ..\time_based_table_operation\time_based_table_operation.h
 loadbank\auto_mode.o: ..\measurement\measurement.h
 loadbank\auto_mode.o: ..\hmi_communication\hmi_communication.h
+loadbank\auto_mode.o: ..\capacity_measurement\capacity_measurement.h

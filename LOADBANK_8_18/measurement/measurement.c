@@ -190,7 +190,7 @@ void MEASUREMENT_CALCULATION (void)
 		
 	
 		
-			AVERAGE_ADC_IN_REEL_UNIT[volt]=auto_calibration(  no_of_calibration_values_ch0 , calibration_array_in_voltage,calibration_adc_array_volt,AVERAGE_ADC[0]); 
+			AVERAGE_ADC_IN_REEL_UNIT[volt]=auto_calibration(  no_of_calibration_values_ch0 , calibration_array_in_voltage,calibration_adc_array_volt,AVERAGE_ADC[volt]); 
 if(AVERAGE_ADC_IN_REEL_UNIT[volt]<=9)
 {
   AVERAGE_ADC_IN_REEL_UNIT[volt]=0;

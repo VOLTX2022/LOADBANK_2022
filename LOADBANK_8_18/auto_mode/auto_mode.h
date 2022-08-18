@@ -15,7 +15,14 @@ extern uint8_t counter_of_no_of_entered_process;
 #define resume 2
 #define start  3
 #define stop   4 
-#define max_no_of_members 36	 
+
+#define not_selected    		 0
+#define sd_card_auto_mode    1
+#define hmi_auto_mode    		 2
+
+#define hmi_max_no_of_members 36
+#define sd_card_max_no_of_members 6	 
+
 
 #define	hmi_current_address(x)  					(hmi_first_current_address_in_multi_mode+x)//starting from x =0 not 1
 #define	hmi_duration_address(x)  					(hmi_first_duration_address_in_multi_mode+x)//starting from x =0 not 1

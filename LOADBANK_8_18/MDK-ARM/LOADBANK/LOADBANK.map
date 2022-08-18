@@ -130,6 +130,8 @@ Section Cross References
     auto_mode.o(i.update_operation) refers to time_based_table_operation.o(i.Get_Interval_Currentstatus) for Get_Interval_Currentstatus
     auto_mode.o(i.update_operation) refers to hmi_communication.o(i.SEND_TO_HMI) for SEND_TO_HMI
     auto_mode.o(i.update_operation) refers to hmi_handler.o(i.flashing_registeration) for flashing_registeration
+    auto_mode.o(i.update_operation) refers to capacity_measurement.o(i.get_capacity_and_stop_calculations) for get_capacity_and_stop_calculations
+    auto_mode.o(i.update_operation) refers to capacity_measurement.o(i.capacity_start_calculations) for capacity_start_calculations
     auto_mode.o(i.update_operation) refers to auto_mode.o(i.auto_operation) for auto_operation
     auto_mode.o(i.update_operation) refers to auto_mode.o(.data) for .data
     auto_mode.o(i.update_operation) refers to auto_mode.o(.bss) for .bss
@@ -184,10 +186,8 @@ Section Cross References
     hmi_handler.o(i.HMI_Addresses) refers to hmi_communication.o(.data) for Address
     hmi_handler.o(i.HMI_Addresses) refers to auto_mode.o(.data) for mode
     hmi_handler.o(i.HMI_Addresses) refers to firing.o(.data) for new_firing_order_flag
-    hmi_handler.o(i.HMI_Addresses) refers to auto_mode.o(.bss) for current_and_time_values_array
+    hmi_handler.o(i.HMI_Addresses) refers to auto_mode.o(.bss) for hmi_current_time_and_capacity_values_array
     hmi_handler.o(i.HMI_Addresses) refers to application.o(.data) for STOP_FIXED_STEPS_FLAG
-    hmi_handler.o(i.HMI_Addresses) refers to auto_mode.o(.data) for hmi_auto_mode_flag
-    hmi_handler.o(i.HMI_Addresses) refers to auto_mode.o(.data) for sd_card_auto_mode_flag
     hmi_handler.o(i.HMI_Addresses) refers to measurement_history.o(.data) for record_on_flag
     hmi_handler.o(i.beep_flashing) refers to hmi_handler.o(i.flashing_registeration) for flashing_registeration
     hmi_handler.o(i.beep_flashing) refers to hmi_handler.o(.data) for .data
@@ -1039,7 +1039,9 @@ Removing Unused input sections from the image.
     Removing auto_mode.o(.rev16_text), (4 bytes).
     Removing auto_mode.o(.revsh_text), (4 bytes).
     Removing auto_mode.o(i.single_set_point_order), (56 bytes).
+    Removing auto_mode.o(.bss), (72 bytes).
     Removing auto_mode.o(.data), (2 bytes).
+    Removing auto_mode.o(.data), (1 bytes).
     Removing auto_mode.o(.data), (1 bytes).
     Removing configration.o(.rev16_text), (4 bytes).
     Removing configration.o(.revsh_text), (4 bytes).
@@ -1109,15 +1111,11 @@ Removing Unused input sections from the image.
     Removing capacity_measurement.o(.rev16_text), (4 bytes).
     Removing capacity_measurement.o(.revsh_text), (4 bytes).
     Removing capacity_measurement.o(i.calculate_capacity), (36 bytes).
-    Removing capacity_measurement.o(i.calculate_total_capacity), (36 bytes).
     Removing capacity_measurement.o(i.capacity_pause_calculations), (16 bytes).
     Removing capacity_measurement.o(i.capacity_resume_calculations), (16 bytes).
-    Removing capacity_measurement.o(i.capacity_start_calculations), (16 bytes).
     Removing capacity_measurement.o(i.clear_capacity_history), (20 bytes).
-    Removing capacity_measurement.o(i.get_capacity_and_stop_calculations), (52 bytes).
     Removing capacity_measurement.o(i.get_total_capacity), (16 bytes).
     Removing capacity_measurement.o(i.start_total_capacity_calculations), (16 bytes).
-    Removing capacity_measurement.o(.data), (16 bytes).
     Removing display_iterration.o(.rev16_text), (4 bytes).
     Removing display_iterration.o(.revsh_text), (4 bytes).
     Removing display_iterration.o(i.clear_iteration_display), (62 bytes).
@@ -1526,7 +1524,7 @@ Removing Unused input sections from the image.
     Removing system_stm32f0xx.o(.revsh_text), (4 bytes).
     Removing system_stm32f0xx.o(i.SystemCoreClockUpdate), (108 bytes).
 
-500 unused section(s) (total 35581 bytes) removed from the image.
+498 unused section(s) (total 35534 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1564,28 +1562,28 @@ Image Symbol Table
     ../Src/tim.c                             0x00000000   Number         0  tim.o ABSOLUTE
     ../Src/usart.c                           0x00000000   Number         0  usart.o ABSOLUTE
     ../clib/../cmprslib/zerorunl2.c          0x00000000   Number         0  __dczerorl2.o ABSOLUTE
-    ../clib/microlib/division.c              0x00000000   Number         0  idiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/division.c              0x00000000   Number         0  idiv.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry12b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
-    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
     ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
     ../clib/microlib/string/memset.c         0x00000000   Number         0  memseta.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../fplib/microlib/d2f.c                  0x00000000   Number         0  d2f.o ABSOLUTE
@@ -1596,16 +1594,16 @@ Image Symbol Table
     ../fplib/microlib/fpdiv.c                0x00000000   Number         0  fdiv.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  fepilogue.o ABSOLUTE
-    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixi.o ABSOLUTE
-    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixui.o ABSOLUTE
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  ffixui.o ABSOLUTE
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  ffixi.o ABSOLUTE
-    ../fplib/microlib/fpflt.c                0x00000000   Number         0  dfltui.o ABSOLUTE
-    ../fplib/microlib/fpflt.c                0x00000000   Number         0  dfltul.o ABSOLUTE
-    ../fplib/microlib/fpflt.c                0x00000000   Number         0  ffltui.o ABSOLUTE
+    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixi.o ABSOLUTE
+    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixui.o ABSOLUTE
     ../fplib/microlib/fpflt.c                0x00000000   Number         0  fflti.o ABSOLUTE
-    ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
+    ../fplib/microlib/fpflt.c                0x00000000   Number         0  dfltul.o ABSOLUTE
+    ../fplib/microlib/fpflt.c                0x00000000   Number         0  dfltui.o ABSOLUTE
+    ../fplib/microlib/fpflt.c                0x00000000   Number         0  ffltui.o ABSOLUTE
     ../fplib/microlib/fpmul.c                0x00000000   Number         0  fmul.o ABSOLUTE
+    ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
     ../fplib/microlib/fpscalb.c              0x00000000   Number         0  fscalb.o ABSOLUTE
     ..\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal.c 0x00000000   Number         0  stm32f0xx_hal.o ABSOLUTE
     ..\Drivers\STM32F0xx_HAL_Driver\Src\stm32f0xx_hal_adc.c 0x00000000   Number         0  stm32f0xx_hal_adc.o ABSOLUTE
@@ -1716,8 +1714,8 @@ Image Symbol Table
     .text                                    0x08000898   Section       20  cfrcmple.o(.text)
     .text                                    0x080008ac   Section        0  llshl.o(.text)
     .text                                    0x080008cc   Section        0  llsshr.o(.text)
-    .text                                    0x080008f2   Section        0  iusefp.o(.text)
     .text                                    0x080008f2   Section        0  fepilogue.o(.text)
+    .text                                    0x080008f2   Section        0  iusefp.o(.text)
     .text                                    0x08000974   Section        0  depilogue.o(.text)
     .text                                    0x08000a34   Section       36  init.o(.text)
     .text                                    0x08000a58   Section        0  __dczerorl2.o(.text)
@@ -1807,167 +1805,174 @@ Image Symbol Table
     i.HAL_UART_TxCpltCallback                0x080027bc   Section        0  stm32f0xx_hal_uart.o(i.HAL_UART_TxCpltCallback)
     i.HAL_UART_TxHalfCpltCallback            0x080027be   Section        0  stm32f0xx_hal_uart.o(i.HAL_UART_TxHalfCpltCallback)
     i.HMI_Addresses                          0x080027c0   Section        0  hmi_handler.o(i.HMI_Addresses)
-    i.HardFault_Handler                      0x08002994   Section        0  stm32f0xx_it.o(i.HardFault_Handler)
-    i.ILLUMINATE_STEPS_ON_HMI                0x08002998   Section        0  application.o(i.ILLUMINATE_STEPS_ON_HMI)
-    i.Interval_Switching_Action              0x080029e8   Section        0  time_based_table_operation.o(i.Interval_Switching_Action)
-    i.IsEmpty                                0x08002a38   Section        0  queue_dgus_rx.o(i.IsEmpty)
-    i.IsFull                                 0x08002a4c   Section        0  queue_dgus_rx.o(i.IsFull)
-    i.MEASUREMENT_CALCULATION                0x08002a60   Section        0  measurement.o(i.MEASUREMENT_CALCULATION)
-    i.MULTI_PURPOSE_TIMER                    0x08002bb8   Section        0  time_handler.o(i.MULTI_PURPOSE_TIMER)
-    i.MX_ADC_Init                            0x08002cac   Section        0  adc.o(i.MX_ADC_Init)
-    i.MX_DMA_Init                            0x08002d3c   Section        0  dma.o(i.MX_DMA_Init)
-    i.MX_GPIO_Init                           0x08002d74   Section        0  gpio.o(i.MX_GPIO_Init)
-    i.MX_TIM1_Init                           0x08002e74   Section        0  tim.o(i.MX_TIM1_Init)
-    i.MX_TIM3_Init                           0x08002f4c   Section        0  tim.o(i.MX_TIM3_Init)
-    i.MX_USART1_UART_Init                    0x08002fb8   Section        0  usart.o(i.MX_USART1_UART_Init)
-    i.NMI_Handler                            0x08002ff0   Section        0  stm32f0xx_it.o(i.NMI_Handler)
-    i.NVIC_SetPriority                       0x08002ff4   Section        0  stm32f0xx_hal_cortex.o(i.NVIC_SetPriority)
-    NVIC_SetPriority                         0x08002ff5   Thumb Code    60  stm32f0xx_hal_cortex.o(i.NVIC_SetPriority)
-    i.OFF_CURRENT                            0x08003038   Section        0  firing.o(i.OFF_CURRENT)
-    i.PIDController_Update                   0x08003058   Section        0  pid.o(i.PIDController_Update)
-    i.Pause_Operation                        0x0800313c   Section        0  time_based_table_operation.o(i.Pause_Operation)
-    i.PendSV_Handler                         0x08003148   Section        0  stm32f0xx_it.o(i.PendSV_Handler)
-    i.Process_Runing                         0x0800314c   Section        0  application.o(i.Process_Runing)
-    i.RELAYS_OPERATION                       0x080031ec   Section        0  application.o(i.RELAYS_OPERATION)
-    i.Read_All_Signals                       0x08003340   Section        0  application.o(i.Read_All_Signals)
-    i.Resume_Operation                       0x080033b4   Section        0  time_based_table_operation.o(i.Resume_Operation)
-    i.SEND_TO_HMI                            0x080033c0   Section        0  hmi_communication.o(i.SEND_TO_HMI)
-    i.SVC_Handler                            0x080033f0   Section        0  stm32f0xx_it.o(i.SVC_Handler)
-    i.SerialEvent                            0x080033f4   Section        0  hmi_communication.o(i.SerialEvent)
-    i.Start_Operation                        0x0800348c   Section        0  time_based_table_operation.o(i.Start_Operation)
-    i.Stop_Operation                         0x080034b0   Section        0  time_based_table_operation.o(i.Stop_Operation)
-    i.Store_Value                            0x080034cc   Section        0  measurement_history.o(i.Store_Value)
-    i.SysTick_Handler                        0x08003534   Section        0  stm32f0xx_it.o(i.SysTick_Handler)
-    i.SystemClock_Config                     0x0800353c   Section        0  main.o(i.SystemClock_Config)
-    i.SystemInit                             0x08003598   Section        0  system_stm32f0xx.o(i.SystemInit)
-    i.TIM3_IRQHandler                        0x080035f4   Section        0  stm32f0xx_it.o(i.TIM3_IRQHandler)
-    i.TIM_Base_SetConfig                     0x08003604   Section        0  stm32f0xx_hal_tim.o(i.TIM_Base_SetConfig)
-    i.TIM_CCxChannelCmd                      0x08003698   Section        0  stm32f0xx_hal_tim.o(i.TIM_CCxChannelCmd)
-    i.TIM_ETR_SetConfig                      0x080036ae   Section        0  stm32f0xx_hal_tim.o(i.TIM_ETR_SetConfig)
-    i.TIM_ITRx_SetConfig                     0x080036c4   Section        0  stm32f0xx_hal_tim.o(i.TIM_ITRx_SetConfig)
-    TIM_ITRx_SetConfig                       0x080036c5   Thumb Code    16  stm32f0xx_hal_tim.o(i.TIM_ITRx_SetConfig)
-    i.TIM_OC1_SetConfig                      0x080036d4   Section        0  stm32f0xx_hal_tim.o(i.TIM_OC1_SetConfig)
-    TIM_OC1_SetConfig                        0x080036d5   Thumb Code   120  stm32f0xx_hal_tim.o(i.TIM_OC1_SetConfig)
-    i.TIM_OC2_SetConfig                      0x0800375c   Section        0  stm32f0xx_hal_tim.o(i.TIM_OC2_SetConfig)
-    i.TIM_OC3_SetConfig                      0x080037dc   Section        0  stm32f0xx_hal_tim.o(i.TIM_OC3_SetConfig)
-    TIM_OC3_SetConfig                        0x080037dd   Thumb Code   114  stm32f0xx_hal_tim.o(i.TIM_OC3_SetConfig)
-    i.TIM_OC4_SetConfig                      0x08003860   Section        0  stm32f0xx_hal_tim.o(i.TIM_OC4_SetConfig)
-    TIM_OC4_SetConfig                        0x08003861   Thumb Code    90  stm32f0xx_hal_tim.o(i.TIM_OC4_SetConfig)
-    i.TIM_TI1_ConfigInputStage               0x080038cc   Section        0  stm32f0xx_hal_tim.o(i.TIM_TI1_ConfigInputStage)
-    TIM_TI1_ConfigInputStage                 0x080038cd   Thumb Code    34  stm32f0xx_hal_tim.o(i.TIM_TI1_ConfigInputStage)
-    i.TIM_TI2_ConfigInputStage               0x080038ee   Section        0  stm32f0xx_hal_tim.o(i.TIM_TI2_ConfigInputStage)
-    TIM_TI2_ConfigInputStage                 0x080038ef   Thumb Code    38  stm32f0xx_hal_tim.o(i.TIM_TI2_ConfigInputStage)
-    i.UART_AdvFeatureConfig                  0x08003914   Section        0  stm32f0xx_hal_uart.o(i.UART_AdvFeatureConfig)
-    i.UART_CheckIdleState                    0x080039e0   Section        0  stm32f0xx_hal_uart.o(i.UART_CheckIdleState)
-    i.UART_DMAAbortOnError                   0x08003a48   Section        0  stm32f0xx_hal_uart.o(i.UART_DMAAbortOnError)
-    UART_DMAAbortOnError                     0x08003a49   Thumb Code    20  stm32f0xx_hal_uart.o(i.UART_DMAAbortOnError)
-    i.UART_DMAError                          0x08003a5c   Section        0  stm32f0xx_hal_uart.o(i.UART_DMAError)
-    UART_DMAError                            0x08003a5d   Thumb Code    74  stm32f0xx_hal_uart.o(i.UART_DMAError)
-    i.UART_DMAReceiveCplt                    0x08003aa6   Section        0  stm32f0xx_hal_uart.o(i.UART_DMAReceiveCplt)
-    UART_DMAReceiveCplt                      0x08003aa7   Thumb Code    64  stm32f0xx_hal_uart.o(i.UART_DMAReceiveCplt)
-    i.UART_DMARxHalfCplt                     0x08003ae6   Section        0  stm32f0xx_hal_uart.o(i.UART_DMARxHalfCplt)
-    UART_DMARxHalfCplt                       0x08003ae7   Thumb Code    10  stm32f0xx_hal_uart.o(i.UART_DMARxHalfCplt)
-    i.UART_DMATransmitCplt                   0x08003af0   Section        0  stm32f0xx_hal_uart.o(i.UART_DMATransmitCplt)
-    UART_DMATransmitCplt                     0x08003af1   Thumb Code    48  stm32f0xx_hal_uart.o(i.UART_DMATransmitCplt)
-    i.UART_DMATxHalfCplt                     0x08003b20   Section        0  stm32f0xx_hal_uart.o(i.UART_DMATxHalfCplt)
-    UART_DMATxHalfCplt                       0x08003b21   Thumb Code    10  stm32f0xx_hal_uart.o(i.UART_DMATxHalfCplt)
-    i.UART_EndRxTransfer                     0x08003b2a   Section        0  stm32f0xx_hal_uart.o(i.UART_EndRxTransfer)
-    UART_EndRxTransfer                       0x08003b2b   Thumb Code    30  stm32f0xx_hal_uart.o(i.UART_EndRxTransfer)
-    i.UART_EndTransmit_IT                    0x08003b48   Section        0  stm32f0xx_hal_uart.o(i.UART_EndTransmit_IT)
-    i.UART_EndTxTransfer                     0x08003b62   Section        0  stm32f0xx_hal_uart.o(i.UART_EndTxTransfer)
-    UART_EndTxTransfer                       0x08003b63   Thumb Code    18  stm32f0xx_hal_uart.o(i.UART_EndTxTransfer)
-    i.UART_Receive_IT                        0x08003b74   Section        0  stm32f0xx_hal_uart.o(i.UART_Receive_IT)
-    i.UART_SetConfig                         0x08003bf0   Section        0  stm32f0xx_hal_uart.o(i.UART_SetConfig)
-    i.UART_Transmit_IT                       0x08003d20   Section        0  stm32f0xx_hal_uart.o(i.UART_Transmit_IT)
-    i.UART_WaitOnFlagUntilTimeout            0x08003d86   Section        0  stm32f0xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout)
-    i.USART1_IRQHandler                      0x08003de8   Section        0  stm32f0xx_it.o(i.USART1_IRQHandler)
-    i.__ARM_clz                              0x08003df8   Section        0  depilogue.o(i.__ARM_clz)
-    i.__ARM_common_switch8                   0x08003e26   Section        0  application.o(i.__ARM_common_switch8)
-    i.__scatterload_copy                     0x08003e40   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x08003e4e   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x08003e50   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i.all_contactors_updated                 0x08003e60   Section        0  application.o(i.all_contactors_updated)
-    i.auto_calibration                       0x08003e88   Section        0  measurement.o(i.auto_calibration)
-    i.auto_operation                         0x08003fb4   Section        0  auto_mode.o(i.auto_operation)
-    i.calculate_array_of_currents            0x08003ff4   Section        0  auto_mode.o(i.calculate_array_of_currents)
-    i.calculate_average_for_display          0x08004048   Section        0  measurement.o(i.calculate_average_for_display)
-    i.calculate_difference_array             0x080040f4   Section        0  auto_mode.o(i.calculate_difference_array)
-    i.calculate_possible_probabilities       0x0800411c   Section        0  auto_mode.o(i.calculate_possible_probabilities)
-    i.calculate_process_begin_end            0x08004160   Section        0  auto_mode.o(i.calculate_process_begin_end)
-    i.check_end_voltage_limitation           0x08004194   Section        0  auto_mode.o(i.check_end_voltage_limitation)
-    i.check_input_current_limits             0x080041d0   Section        0  auto_mode.o(i.check_input_current_limits)
-    i.determine_pwm_value                    0x08004278   Section        0  auto_mode.o(i.determine_pwm_value)
-    i.display_measure_history                0x080042d4   Section        0  measurement_history.o(i.display_measure_history)
-    i.find_best_choice                       0x08004320   Section        0  auto_mode.o(i.find_best_choice)
-    i.firing                                 0x08004374   Section        0  firing.o(i.firing)
-    i.flashing_registeration                 0x08004424   Section        0  hmi_handler.o(i.flashing_registeration)
-    i.initiate_multiset_point_mode           0x080044b4   Section        0  auto_mode.o(i.initiate_multiset_point_mode)
-    i.main                                   0x080044f4   Section        0  main.o(i.main)
-    i.measure_10_msec                        0x08004548   Section        0  measurement.o(i.measure_10_msec)
-    i.measure_start_dma_adc                  0x08004594   Section        0  measurement.o(i.measure_start_dma_adc)
-    i.measure_timer_it                       0x080045bc   Section        0  measurement.o(i.measure_timer_it)
-    i.multi_set_point_operation              0x080045fc   Section        0  auto_mode.o(i.multi_set_point_operation)
-    i.on_the_suitable_steps                  0x08004770   Section        0  auto_mode.o(i.on_the_suitable_steps)
-    i.read_next_address_without_dequeue      0x080047a0   Section        0  queue_dgus_rx.o(i.read_next_address_without_dequeue)
-    i.refresh_hmi_screen_while_unpushed      0x080047cc   Section        0  hmi_handler.o(i.refresh_hmi_screen_while_unpushed)
-    i.replace                                0x080047f0   Section        0  auto_mode.o(i.replace)
-    i.search_if_any_step_on                  0x080047fc   Section        0  application.o(i.search_if_any_step_on)
-    i.search_on_queue                        0x08004818   Section        0  queue_dgus_rx.o(i.search_on_queue)
-    i.send_tx_queue_hmi_communication        0x08004898   Section        0  hmi_communication.o(i.send_tx_queue_hmi_communication)
-    i.set_half_sec_counter                   0x080049bc   Section        0  time_handler.o(i.set_half_sec_counter)
-    i.start_hmi_uart                         0x080049c8   Section        0  hmi_communication.o(i.start_hmi_uart)
-    i.update_operation                       0x080049e0   Section        0  auto_mode.o(i.update_operation)
-    i.update_steps_and_pwm                   0x08004a80   Section        0  application.o(i.update_steps_and_pwm)
-    .constdata                               0x08004b14   Section       16  system_stm32f0xx.o(.constdata)
-    .constdata                               0x08004b24   Section        8  system_stm32f0xx.o(.constdata)
+    i.HardFault_Handler                      0x080029a4   Section        0  stm32f0xx_it.o(i.HardFault_Handler)
+    i.ILLUMINATE_STEPS_ON_HMI                0x080029a8   Section        0  application.o(i.ILLUMINATE_STEPS_ON_HMI)
+    i.Interval_Switching_Action              0x080029f8   Section        0  time_based_table_operation.o(i.Interval_Switching_Action)
+    i.IsEmpty                                0x08002a54   Section        0  queue_dgus_rx.o(i.IsEmpty)
+    i.IsFull                                 0x08002a68   Section        0  queue_dgus_rx.o(i.IsFull)
+    i.MEASUREMENT_CALCULATION                0x08002a7c   Section        0  measurement.o(i.MEASUREMENT_CALCULATION)
+    i.MULTI_PURPOSE_TIMER                    0x08002bd4   Section        0  time_handler.o(i.MULTI_PURPOSE_TIMER)
+    i.MX_ADC_Init                            0x08002cc8   Section        0  adc.o(i.MX_ADC_Init)
+    i.MX_DMA_Init                            0x08002d58   Section        0  dma.o(i.MX_DMA_Init)
+    i.MX_GPIO_Init                           0x08002d90   Section        0  gpio.o(i.MX_GPIO_Init)
+    i.MX_TIM1_Init                           0x08002e90   Section        0  tim.o(i.MX_TIM1_Init)
+    i.MX_TIM3_Init                           0x08002f68   Section        0  tim.o(i.MX_TIM3_Init)
+    i.MX_USART1_UART_Init                    0x08002fd4   Section        0  usart.o(i.MX_USART1_UART_Init)
+    i.NMI_Handler                            0x0800300c   Section        0  stm32f0xx_it.o(i.NMI_Handler)
+    i.NVIC_SetPriority                       0x08003010   Section        0  stm32f0xx_hal_cortex.o(i.NVIC_SetPriority)
+    NVIC_SetPriority                         0x08003011   Thumb Code    60  stm32f0xx_hal_cortex.o(i.NVIC_SetPriority)
+    i.OFF_CURRENT                            0x08003054   Section        0  firing.o(i.OFF_CURRENT)
+    i.PIDController_Update                   0x08003074   Section        0  pid.o(i.PIDController_Update)
+    i.Pause_Operation                        0x08003158   Section        0  time_based_table_operation.o(i.Pause_Operation)
+    i.PendSV_Handler                         0x08003164   Section        0  stm32f0xx_it.o(i.PendSV_Handler)
+    i.Process_Runing                         0x08003168   Section        0  application.o(i.Process_Runing)
+    i.RELAYS_OPERATION                       0x08003208   Section        0  application.o(i.RELAYS_OPERATION)
+    i.Read_All_Signals                       0x0800335c   Section        0  application.o(i.Read_All_Signals)
+    i.Resume_Operation                       0x080033d0   Section        0  time_based_table_operation.o(i.Resume_Operation)
+    i.SEND_TO_HMI                            0x080033dc   Section        0  hmi_communication.o(i.SEND_TO_HMI)
+    i.SVC_Handler                            0x0800340c   Section        0  stm32f0xx_it.o(i.SVC_Handler)
+    i.SerialEvent                            0x08003410   Section        0  hmi_communication.o(i.SerialEvent)
+    i.Start_Operation                        0x080034a8   Section        0  time_based_table_operation.o(i.Start_Operation)
+    i.Stop_Operation                         0x080034cc   Section        0  time_based_table_operation.o(i.Stop_Operation)
+    i.Store_Value                            0x080034e8   Section        0  measurement_history.o(i.Store_Value)
+    i.SysTick_Handler                        0x08003550   Section        0  stm32f0xx_it.o(i.SysTick_Handler)
+    i.SystemClock_Config                     0x08003558   Section        0  main.o(i.SystemClock_Config)
+    i.SystemInit                             0x080035b4   Section        0  system_stm32f0xx.o(i.SystemInit)
+    i.TIM3_IRQHandler                        0x08003610   Section        0  stm32f0xx_it.o(i.TIM3_IRQHandler)
+    i.TIM_Base_SetConfig                     0x08003620   Section        0  stm32f0xx_hal_tim.o(i.TIM_Base_SetConfig)
+    i.TIM_CCxChannelCmd                      0x080036b4   Section        0  stm32f0xx_hal_tim.o(i.TIM_CCxChannelCmd)
+    i.TIM_ETR_SetConfig                      0x080036ca   Section        0  stm32f0xx_hal_tim.o(i.TIM_ETR_SetConfig)
+    i.TIM_ITRx_SetConfig                     0x080036e0   Section        0  stm32f0xx_hal_tim.o(i.TIM_ITRx_SetConfig)
+    TIM_ITRx_SetConfig                       0x080036e1   Thumb Code    16  stm32f0xx_hal_tim.o(i.TIM_ITRx_SetConfig)
+    i.TIM_OC1_SetConfig                      0x080036f0   Section        0  stm32f0xx_hal_tim.o(i.TIM_OC1_SetConfig)
+    TIM_OC1_SetConfig                        0x080036f1   Thumb Code   120  stm32f0xx_hal_tim.o(i.TIM_OC1_SetConfig)
+    i.TIM_OC2_SetConfig                      0x08003778   Section        0  stm32f0xx_hal_tim.o(i.TIM_OC2_SetConfig)
+    i.TIM_OC3_SetConfig                      0x080037f8   Section        0  stm32f0xx_hal_tim.o(i.TIM_OC3_SetConfig)
+    TIM_OC3_SetConfig                        0x080037f9   Thumb Code   114  stm32f0xx_hal_tim.o(i.TIM_OC3_SetConfig)
+    i.TIM_OC4_SetConfig                      0x0800387c   Section        0  stm32f0xx_hal_tim.o(i.TIM_OC4_SetConfig)
+    TIM_OC4_SetConfig                        0x0800387d   Thumb Code    90  stm32f0xx_hal_tim.o(i.TIM_OC4_SetConfig)
+    i.TIM_TI1_ConfigInputStage               0x080038e8   Section        0  stm32f0xx_hal_tim.o(i.TIM_TI1_ConfigInputStage)
+    TIM_TI1_ConfigInputStage                 0x080038e9   Thumb Code    34  stm32f0xx_hal_tim.o(i.TIM_TI1_ConfigInputStage)
+    i.TIM_TI2_ConfigInputStage               0x0800390a   Section        0  stm32f0xx_hal_tim.o(i.TIM_TI2_ConfigInputStage)
+    TIM_TI2_ConfigInputStage                 0x0800390b   Thumb Code    38  stm32f0xx_hal_tim.o(i.TIM_TI2_ConfigInputStage)
+    i.UART_AdvFeatureConfig                  0x08003930   Section        0  stm32f0xx_hal_uart.o(i.UART_AdvFeatureConfig)
+    i.UART_CheckIdleState                    0x080039fc   Section        0  stm32f0xx_hal_uart.o(i.UART_CheckIdleState)
+    i.UART_DMAAbortOnError                   0x08003a64   Section        0  stm32f0xx_hal_uart.o(i.UART_DMAAbortOnError)
+    UART_DMAAbortOnError                     0x08003a65   Thumb Code    20  stm32f0xx_hal_uart.o(i.UART_DMAAbortOnError)
+    i.UART_DMAError                          0x08003a78   Section        0  stm32f0xx_hal_uart.o(i.UART_DMAError)
+    UART_DMAError                            0x08003a79   Thumb Code    74  stm32f0xx_hal_uart.o(i.UART_DMAError)
+    i.UART_DMAReceiveCplt                    0x08003ac2   Section        0  stm32f0xx_hal_uart.o(i.UART_DMAReceiveCplt)
+    UART_DMAReceiveCplt                      0x08003ac3   Thumb Code    64  stm32f0xx_hal_uart.o(i.UART_DMAReceiveCplt)
+    i.UART_DMARxHalfCplt                     0x08003b02   Section        0  stm32f0xx_hal_uart.o(i.UART_DMARxHalfCplt)
+    UART_DMARxHalfCplt                       0x08003b03   Thumb Code    10  stm32f0xx_hal_uart.o(i.UART_DMARxHalfCplt)
+    i.UART_DMATransmitCplt                   0x08003b0c   Section        0  stm32f0xx_hal_uart.o(i.UART_DMATransmitCplt)
+    UART_DMATransmitCplt                     0x08003b0d   Thumb Code    48  stm32f0xx_hal_uart.o(i.UART_DMATransmitCplt)
+    i.UART_DMATxHalfCplt                     0x08003b3c   Section        0  stm32f0xx_hal_uart.o(i.UART_DMATxHalfCplt)
+    UART_DMATxHalfCplt                       0x08003b3d   Thumb Code    10  stm32f0xx_hal_uart.o(i.UART_DMATxHalfCplt)
+    i.UART_EndRxTransfer                     0x08003b46   Section        0  stm32f0xx_hal_uart.o(i.UART_EndRxTransfer)
+    UART_EndRxTransfer                       0x08003b47   Thumb Code    30  stm32f0xx_hal_uart.o(i.UART_EndRxTransfer)
+    i.UART_EndTransmit_IT                    0x08003b64   Section        0  stm32f0xx_hal_uart.o(i.UART_EndTransmit_IT)
+    i.UART_EndTxTransfer                     0x08003b7e   Section        0  stm32f0xx_hal_uart.o(i.UART_EndTxTransfer)
+    UART_EndTxTransfer                       0x08003b7f   Thumb Code    18  stm32f0xx_hal_uart.o(i.UART_EndTxTransfer)
+    i.UART_Receive_IT                        0x08003b90   Section        0  stm32f0xx_hal_uart.o(i.UART_Receive_IT)
+    i.UART_SetConfig                         0x08003c0c   Section        0  stm32f0xx_hal_uart.o(i.UART_SetConfig)
+    i.UART_Transmit_IT                       0x08003d3c   Section        0  stm32f0xx_hal_uart.o(i.UART_Transmit_IT)
+    i.UART_WaitOnFlagUntilTimeout            0x08003da2   Section        0  stm32f0xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout)
+    i.USART1_IRQHandler                      0x08003e04   Section        0  stm32f0xx_it.o(i.USART1_IRQHandler)
+    i.__ARM_clz                              0x08003e14   Section        0  depilogue.o(i.__ARM_clz)
+    i.__ARM_common_switch8                   0x08003e42   Section        0  application.o(i.__ARM_common_switch8)
+    i.__scatterload_copy                     0x08003e5c   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x08003e6a   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08003e6c   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.all_contactors_updated                 0x08003e7c   Section        0  application.o(i.all_contactors_updated)
+    i.auto_calibration                       0x08003ea4   Section        0  measurement.o(i.auto_calibration)
+    i.auto_operation                         0x08003fd0   Section        0  auto_mode.o(i.auto_operation)
+    i.calculate_array_of_currents            0x08004010   Section        0  auto_mode.o(i.calculate_array_of_currents)
+    i.calculate_average_for_display          0x08004064   Section        0  measurement.o(i.calculate_average_for_display)
+    i.calculate_difference_array             0x08004110   Section        0  auto_mode.o(i.calculate_difference_array)
+    i.calculate_possible_probabilities       0x08004138   Section        0  auto_mode.o(i.calculate_possible_probabilities)
+    i.calculate_process_begin_end            0x0800417c   Section        0  auto_mode.o(i.calculate_process_begin_end)
+    i.calculate_total_capacity               0x080041c0   Section        0  capacity_measurement.o(i.calculate_total_capacity)
+    i.capacity_start_calculations            0x080041e4   Section        0  capacity_measurement.o(i.capacity_start_calculations)
+    i.check_end_voltage_limitation           0x080041f4   Section        0  auto_mode.o(i.check_end_voltage_limitation)
+    i.check_input_current_limits             0x08004230   Section        0  auto_mode.o(i.check_input_current_limits)
+    i.determine_pwm_value                    0x080042d8   Section        0  auto_mode.o(i.determine_pwm_value)
+    i.display_measure_history                0x08004334   Section        0  measurement_history.o(i.display_measure_history)
+    i.find_best_choice                       0x08004380   Section        0  auto_mode.o(i.find_best_choice)
+    i.firing                                 0x080043d4   Section        0  firing.o(i.firing)
+    i.flashing_registeration                 0x08004484   Section        0  hmi_handler.o(i.flashing_registeration)
+    i.get_capacity_and_stop_calculations     0x08004514   Section        0  capacity_measurement.o(i.get_capacity_and_stop_calculations)
+    i.initiate_multiset_point_mode           0x08004548   Section        0  auto_mode.o(i.initiate_multiset_point_mode)
+    i.main                                   0x08004588   Section        0  main.o(i.main)
+    i.measure_10_msec                        0x080045dc   Section        0  measurement.o(i.measure_10_msec)
+    i.measure_start_dma_adc                  0x08004628   Section        0  measurement.o(i.measure_start_dma_adc)
+    i.measure_timer_it                       0x08004650   Section        0  measurement.o(i.measure_timer_it)
+    i.multi_set_point_operation              0x08004690   Section        0  auto_mode.o(i.multi_set_point_operation)
+    i.on_the_suitable_steps                  0x08004804   Section        0  auto_mode.o(i.on_the_suitable_steps)
+    i.read_next_address_without_dequeue      0x08004834   Section        0  queue_dgus_rx.o(i.read_next_address_without_dequeue)
+    i.refresh_hmi_screen_while_unpushed      0x08004860   Section        0  hmi_handler.o(i.refresh_hmi_screen_while_unpushed)
+    i.replace                                0x08004884   Section        0  auto_mode.o(i.replace)
+    i.search_if_any_step_on                  0x08004890   Section        0  application.o(i.search_if_any_step_on)
+    i.search_on_queue                        0x080048ac   Section        0  queue_dgus_rx.o(i.search_on_queue)
+    i.send_tx_queue_hmi_communication        0x0800492c   Section        0  hmi_communication.o(i.send_tx_queue_hmi_communication)
+    i.set_half_sec_counter                   0x08004a50   Section        0  time_handler.o(i.set_half_sec_counter)
+    i.start_hmi_uart                         0x08004a5c   Section        0  hmi_communication.o(i.start_hmi_uart)
+    i.update_operation                       0x08004a74   Section        0  auto_mode.o(i.update_operation)
+    i.update_steps_and_pwm                   0x08004b50   Section        0  application.o(i.update_steps_and_pwm)
+    .constdata                               0x08004be4   Section       16  system_stm32f0xx.o(.constdata)
+    .constdata                               0x08004bf4   Section        8  system_stm32f0xx.o(.constdata)
     .data                                    0x20000000   Section       24  application.o(.data)
     old_setting                              0x20000004   Data           2  application.o(.data)
     after_pid_setting                        0x20000006   Data           2  application.o(.data)
     .data                                    0x20000018   Section       80  arrays_calibration_firing.o(.data)
     .data                                    0x20000068   Section       80  arrays_calibration_firing.o(.data)
-    .data                                    0x200000b8   Section      104  auto_mode.o(.data)
-    status                                   0x200000c3   Data           1  auto_mode.o(.data)
-    max_input_count                          0x200000c4   Data           1  auto_mode.o(.data)
-    .data                                    0x20000120   Section        1  auto_mode.o(.data)
-    .data                                    0x20000121   Section        1  auto_mode.o(.data)
-    .data                                    0x20000122   Section        6  firing.o(.data)
-    .data                                    0x20000128   Section       59  hmi_communication.o(.data)
-    messege_arranger_flag                    0x2000012c   Data           1  hmi_communication.o(.data)
-    messege_arranger_arr_1                   0x2000012d   Data           1  hmi_communication.o(.data)
-    messege_arranger_arr_2                   0x2000012e   Data           1  hmi_communication.o(.data)
-    .data                                    0x20000163   Section        1  hmi_communication.o(.data)
-    .data                                    0x20000164   Section       44  hmi_handler.o(.data)
-    tog                                      0x20000167   Data           1  hmi_handler.o(.data)
-    .data                                    0x20000190   Section       48  measurement.o(.data)
-    contactors_response_COUNTER              0x2000019c   Data           2  measurement.o(.data)
-    max                                      0x2000019e   Data           2  measurement.o(.data)
-    .data                                    0x200001c0   Section       16  queue_dgus_rx.o(.data)
-    .data                                    0x200001d0   Section       20  time_handler.o(.data)
-    x                                        0x200001e0   Data           4  time_handler.o(.data)
-    .data                                    0x200001e4   Section        6  measurement_history.o(.data)
-    .data                                    0x200001ec   Section       16  time_based_table_operation.o(.data)
-    Interval_Process_Status                  0x200001ec   Data           1  time_based_table_operation.o(.data)
-    Interval_Action_Type                     0x200001ed   Data           1  time_based_table_operation.o(.data)
-    Overall_Process_Status                   0x200001ee   Data           1  time_based_table_operation.o(.data)
-    Duration_Counter                         0x200001f0   Data           2  time_based_table_operation.o(.data)
-    miles_counter                            0x200001f4   Data           4  time_based_table_operation.o(.data)
-    .data                                    0x200001fc   Section        4  stm32f0xx_hal.o(.data)
-    .data                                    0x20000200   Section        4  system_stm32f0xx.o(.data)
-    .bss                                     0x20000204   Section     1712  auto_mode.o(.bss)
-    .bss                                     0x200008b4   Section      124  hmi_communication.o(.bss)
-    send_dma_buff                            0x200008cc   Data         100  hmi_communication.o(.bss)
-    .bss                                     0x20000930   Section      294  hmi_handler.o(.bss)
-    .bss                                     0x20000a56   Section       64  hmi_handler.o(.bss)
-    .bss                                     0x20000a98   Section      144  measurement.o(.bss)
-    .bss                                     0x20000b28   Section       56  pid.o(.bss)
-    .bss                                     0x20000b60   Section      808  queue_dgus_rx.o(.bss)
-    .bss                                     0x20000e88   Section      288  measurement_history.o(.bss)
-    .bss                                     0x20000fa8   Section       10  time_based_table_operation.o(.bss)
-    Setting_Data                             0x20000fa8   Data          10  time_based_table_operation.o(.bss)
-    .bss                                     0x20000fb4   Section      144  adc.o(.bss)
-    .bss                                     0x20001044   Section      128  tim.o(.bss)
-    .bss                                     0x200010c4   Section      248  usart.o(.bss)
-    STACK                                    0x200011c0   Section     1024  startup_stm32f051x8.o(STACK)
+    .data                                    0x200000b8   Section      112  auto_mode.o(.data)
+    status                                   0x200000c6   Data           1  auto_mode.o(.data)
+    max_input_count                          0x200000c7   Data           1  auto_mode.o(.data)
+    .data                                    0x20000128   Section        6  firing.o(.data)
+    .data                                    0x20000130   Section       59  hmi_communication.o(.data)
+    messege_arranger_flag                    0x20000134   Data           1  hmi_communication.o(.data)
+    messege_arranger_arr_1                   0x20000135   Data           1  hmi_communication.o(.data)
+    messege_arranger_arr_2                   0x20000136   Data           1  hmi_communication.o(.data)
+    .data                                    0x2000016b   Section        1  hmi_communication.o(.data)
+    .data                                    0x2000016c   Section       44  hmi_handler.o(.data)
+    tog                                      0x2000016f   Data           1  hmi_handler.o(.data)
+    .data                                    0x20000198   Section       48  measurement.o(.data)
+    contactors_response_COUNTER              0x200001a4   Data           2  measurement.o(.data)
+    max                                      0x200001a6   Data           2  measurement.o(.data)
+    .data                                    0x200001c8   Section       16  queue_dgus_rx.o(.data)
+    .data                                    0x200001d8   Section       20  time_handler.o(.data)
+    x                                        0x200001e8   Data           4  time_handler.o(.data)
+    .data                                    0x200001ec   Section        6  measurement_history.o(.data)
+    .data                                    0x200001f4   Section       16  time_based_table_operation.o(.data)
+    Interval_Process_Status                  0x200001f4   Data           1  time_based_table_operation.o(.data)
+    Interval_Action_Type                     0x200001f5   Data           1  time_based_table_operation.o(.data)
+    Overall_Process_Status                   0x200001f6   Data           1  time_based_table_operation.o(.data)
+    Duration_Counter                         0x200001f8   Data           2  time_based_table_operation.o(.data)
+    miles_counter                            0x200001fc   Data           4  time_based_table_operation.o(.data)
+    .data                                    0x20000204   Section       16  capacity_measurement.o(.data)
+    start_flag_iteration_capacity_calculations 0x20000204   Data           1  capacity_measurement.o(.data)
+    start_flag_total_capacity_calculations   0x20000205   Data           1  capacity_measurement.o(.data)
+    capacity_current_accumulator             0x20000208   Data           4  capacity_measurement.o(.data)
+    _10mils_counter                          0x2000020c   Data           4  capacity_measurement.o(.data)
+    total_capacity                           0x20000210   Data           4  capacity_measurement.o(.data)
+    .data                                    0x20000214   Section        4  stm32f0xx_hal.o(.data)
+    .data                                    0x20000218   Section        4  system_stm32f0xx.o(.data)
+    .bss                                     0x2000021c   Section     2000  auto_mode.o(.bss)
+    .bss                                     0x200009ec   Section      124  hmi_communication.o(.bss)
+    send_dma_buff                            0x20000a04   Data         100  hmi_communication.o(.bss)
+    .bss                                     0x20000a68   Section      294  hmi_handler.o(.bss)
+    .bss                                     0x20000b8e   Section       64  hmi_handler.o(.bss)
+    .bss                                     0x20000bd0   Section      144  measurement.o(.bss)
+    .bss                                     0x20000c60   Section       56  pid.o(.bss)
+    .bss                                     0x20000c98   Section      808  queue_dgus_rx.o(.bss)
+    .bss                                     0x20000fc0   Section      288  measurement_history.o(.bss)
+    .bss                                     0x200010e0   Section       10  time_based_table_operation.o(.bss)
+    Setting_Data                             0x200010e0   Data          10  time_based_table_operation.o(.bss)
+    .bss                                     0x200010ec   Section      144  adc.o(.bss)
+    .bss                                     0x2000117c   Section      128  tim.o(.bss)
+    .bss                                     0x200011fc   Section      248  usart.o(.bss)
+    STACK                                    0x200012f8   Section     1024  startup_stm32f051x8.o(STACK)
 
     Global Symbols
 
@@ -2148,92 +2153,95 @@ Image Symbol Table
     HAL_UART_Transmit_DMA                    0x08002725   Thumb Code   138  stm32f0xx_hal_uart.o(i.HAL_UART_Transmit_DMA)
     HAL_UART_TxCpltCallback                  0x080027bd   Thumb Code     2  stm32f0xx_hal_uart.o(i.HAL_UART_TxCpltCallback)
     HAL_UART_TxHalfCpltCallback              0x080027bf   Thumb Code     2  stm32f0xx_hal_uart.o(i.HAL_UART_TxHalfCpltCallback)
-    HMI_Addresses                            0x080027c1   Thumb Code   388  hmi_handler.o(i.HMI_Addresses)
-    HardFault_Handler                        0x08002995   Thumb Code     2  stm32f0xx_it.o(i.HardFault_Handler)
-    ILLUMINATE_STEPS_ON_HMI                  0x08002999   Thumb Code    68  application.o(i.ILLUMINATE_STEPS_ON_HMI)
-    Interval_Switching_Action                0x080029e9   Thumb Code    72  time_based_table_operation.o(i.Interval_Switching_Action)
-    IsEmpty                                  0x08002a39   Thumb Code    16  queue_dgus_rx.o(i.IsEmpty)
-    IsFull                                   0x08002a4d   Thumb Code    16  queue_dgus_rx.o(i.IsFull)
-    MEASUREMENT_CALCULATION                  0x08002a61   Thumb Code   298  measurement.o(i.MEASUREMENT_CALCULATION)
-    MULTI_PURPOSE_TIMER                      0x08002bb9   Thumb Code   220  time_handler.o(i.MULTI_PURPOSE_TIMER)
-    MX_ADC_Init                              0x08002cad   Thumb Code   136  adc.o(i.MX_ADC_Init)
-    MX_DMA_Init                              0x08002d3d   Thumb Code    52  dma.o(i.MX_DMA_Init)
-    MX_GPIO_Init                             0x08002d75   Thumb Code   230  gpio.o(i.MX_GPIO_Init)
-    MX_TIM1_Init                             0x08002e75   Thumb Code   202  tim.o(i.MX_TIM1_Init)
-    MX_TIM3_Init                             0x08002f4d   Thumb Code    98  tim.o(i.MX_TIM3_Init)
-    MX_USART1_UART_Init                      0x08002fb9   Thumb Code    48  usart.o(i.MX_USART1_UART_Init)
-    NMI_Handler                              0x08002ff1   Thumb Code     2  stm32f0xx_it.o(i.NMI_Handler)
-    OFF_CURRENT                              0x08003039   Thumb Code    18  firing.o(i.OFF_CURRENT)
-    PIDController_Update                     0x08003059   Thumb Code   226  pid.o(i.PIDController_Update)
-    Pause_Operation                          0x0800313d   Thumb Code     8  time_based_table_operation.o(i.Pause_Operation)
-    PendSV_Handler                           0x08003149   Thumb Code     2  stm32f0xx_it.o(i.PendSV_Handler)
-    Process_Runing                           0x0800314d   Thumb Code   124  application.o(i.Process_Runing)
-    RELAYS_OPERATION                         0x080031ed   Thumb Code   322  application.o(i.RELAYS_OPERATION)
-    Read_All_Signals                         0x08003341   Thumb Code    98  application.o(i.Read_All_Signals)
-    Resume_Operation                         0x080033b5   Thumb Code     8  time_based_table_operation.o(i.Resume_Operation)
-    SEND_TO_HMI                              0x080033c1   Thumb Code    40  hmi_communication.o(i.SEND_TO_HMI)
-    SVC_Handler                              0x080033f1   Thumb Code     2  stm32f0xx_it.o(i.SVC_Handler)
-    SerialEvent                              0x080033f5   Thumb Code   140  hmi_communication.o(i.SerialEvent)
-    Start_Operation                          0x0800348d   Thumb Code    28  time_based_table_operation.o(i.Start_Operation)
-    Stop_Operation                           0x080034b1   Thumb Code    20  time_based_table_operation.o(i.Stop_Operation)
-    Store_Value                              0x080034cd   Thumb Code    88  measurement_history.o(i.Store_Value)
-    SysTick_Handler                          0x08003535   Thumb Code     8  stm32f0xx_it.o(i.SysTick_Handler)
-    SystemClock_Config                       0x0800353d   Thumb Code    92  main.o(i.SystemClock_Config)
-    SystemInit                               0x08003599   Thumb Code    78  system_stm32f0xx.o(i.SystemInit)
-    TIM3_IRQHandler                          0x080035f5   Thumb Code    10  stm32f0xx_it.o(i.TIM3_IRQHandler)
-    TIM_Base_SetConfig                       0x08003605   Thumb Code   124  stm32f0xx_hal_tim.o(i.TIM_Base_SetConfig)
-    TIM_CCxChannelCmd                        0x08003699   Thumb Code    22  stm32f0xx_hal_tim.o(i.TIM_CCxChannelCmd)
-    TIM_ETR_SetConfig                        0x080036af   Thumb Code    22  stm32f0xx_hal_tim.o(i.TIM_ETR_SetConfig)
-    TIM_OC2_SetConfig                        0x0800375d   Thumb Code   110  stm32f0xx_hal_tim.o(i.TIM_OC2_SetConfig)
-    UART_AdvFeatureConfig                    0x08003915   Thumb Code   202  stm32f0xx_hal_uart.o(i.UART_AdvFeatureConfig)
-    UART_CheckIdleState                      0x080039e1   Thumb Code    96  stm32f0xx_hal_uart.o(i.UART_CheckIdleState)
-    UART_EndTransmit_IT                      0x08003b49   Thumb Code    26  stm32f0xx_hal_uart.o(i.UART_EndTransmit_IT)
-    UART_Receive_IT                          0x08003b75   Thumb Code   122  stm32f0xx_hal_uart.o(i.UART_Receive_IT)
-    UART_SetConfig                           0x08003bf1   Thumb Code   280  stm32f0xx_hal_uart.o(i.UART_SetConfig)
-    UART_Transmit_IT                         0x08003d21   Thumb Code   102  stm32f0xx_hal_uart.o(i.UART_Transmit_IT)
-    UART_WaitOnFlagUntilTimeout              0x08003d87   Thumb Code    98  stm32f0xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout)
-    USART1_IRQHandler                        0x08003de9   Thumb Code    10  stm32f0xx_it.o(i.USART1_IRQHandler)
-    __ARM_clz                                0x08003df9   Thumb Code    46  depilogue.o(i.__ARM_clz)
-    __ARM_common_switch8                     0x08003e27   Thumb Code    26  application.o(i.__ARM_common_switch8)
-    __scatterload_copy                       0x08003e41   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x08003e4f   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x08003e51   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    all_contactors_updated                   0x08003e61   Thumb Code    30  application.o(i.all_contactors_updated)
-    auto_calibration                         0x08003e89   Thumb Code   298  measurement.o(i.auto_calibration)
-    auto_operation                           0x08003fb5   Thumb Code    50  auto_mode.o(i.auto_operation)
-    calculate_array_of_currents              0x08003ff5   Thumb Code    72  auto_mode.o(i.calculate_array_of_currents)
-    calculate_average_for_display            0x08004049   Thumb Code   164  measurement.o(i.calculate_average_for_display)
-    calculate_difference_array               0x080040f5   Thumb Code    32  auto_mode.o(i.calculate_difference_array)
-    calculate_possible_probabilities         0x0800411d   Thumb Code    64  auto_mode.o(i.calculate_possible_probabilities)
-    calculate_process_begin_end              0x08004161   Thumb Code    48  auto_mode.o(i.calculate_process_begin_end)
-    check_end_voltage_limitation             0x08004195   Thumb Code    48  auto_mode.o(i.check_end_voltage_limitation)
-    check_input_current_limits               0x080041d1   Thumb Code   156  auto_mode.o(i.check_input_current_limits)
-    determine_pwm_value                      0x08004279   Thumb Code    74  auto_mode.o(i.determine_pwm_value)
-    display_measure_history                  0x080042d5   Thumb Code    72  measurement_history.o(i.display_measure_history)
-    find_best_choice                         0x08004321   Thumb Code    76  auto_mode.o(i.find_best_choice)
-    firing                                   0x08004375   Thumb Code   144  firing.o(i.firing)
-    flashing_registeration                   0x08004425   Thumb Code   134  hmi_handler.o(i.flashing_registeration)
-    initiate_multiset_point_mode             0x080044b5   Thumb Code    54  auto_mode.o(i.initiate_multiset_point_mode)
-    main                                     0x080044f5   Thumb Code    80  main.o(i.main)
-    measure_10_msec                          0x08004549   Thumb Code    66  measurement.o(i.measure_10_msec)
-    measure_start_dma_adc                    0x08004595   Thumb Code    26  measurement.o(i.measure_start_dma_adc)
-    measure_timer_it                         0x080045bd   Thumb Code    56  measurement.o(i.measure_timer_it)
-    multi_set_point_operation                0x080045fd   Thumb Code   354  auto_mode.o(i.multi_set_point_operation)
-    on_the_suitable_steps                    0x08004771   Thumb Code    40  auto_mode.o(i.on_the_suitable_steps)
-    read_next_address_without_dequeue        0x080047a1   Thumb Code    36  queue_dgus_rx.o(i.read_next_address_without_dequeue)
-    refresh_hmi_screen_while_unpushed        0x080047cd   Thumb Code    30  hmi_handler.o(i.refresh_hmi_screen_while_unpushed)
-    replace                                  0x080047f1   Thumb Code    10  auto_mode.o(i.replace)
-    search_if_any_step_on                    0x080047fd   Thumb Code    24  application.o(i.search_if_any_step_on)
-    search_on_queue                          0x08004819   Thumb Code   120  queue_dgus_rx.o(i.search_on_queue)
-    send_tx_queue_hmi_communication          0x08004899   Thumb Code   276  hmi_communication.o(i.send_tx_queue_hmi_communication)
-    set_half_sec_counter                     0x080049bd   Thumb Code     6  time_handler.o(i.set_half_sec_counter)
-    start_hmi_uart                           0x080049c9   Thumb Code    14  hmi_communication.o(i.start_hmi_uart)
-    update_operation                         0x080049e1   Thumb Code   146  auto_mode.o(i.update_operation)
-    update_steps_and_pwm                     0x08004a81   Thumb Code   122  application.o(i.update_steps_and_pwm)
-    AHBPrescTable                            0x08004b14   Data          16  system_stm32f0xx.o(.constdata)
-    APBPrescTable                            0x08004b24   Data           8  system_stm32f0xx.o(.constdata)
-    Region$$Table$$Base                      0x08004b2c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08004b4c   Number         0  anon$$obj.o(Region$$Table)
+    HMI_Addresses                            0x080027c1   Thumb Code   402  hmi_handler.o(i.HMI_Addresses)
+    HardFault_Handler                        0x080029a5   Thumb Code     2  stm32f0xx_it.o(i.HardFault_Handler)
+    ILLUMINATE_STEPS_ON_HMI                  0x080029a9   Thumb Code    68  application.o(i.ILLUMINATE_STEPS_ON_HMI)
+    Interval_Switching_Action                0x080029f9   Thumb Code    82  time_based_table_operation.o(i.Interval_Switching_Action)
+    IsEmpty                                  0x08002a55   Thumb Code    16  queue_dgus_rx.o(i.IsEmpty)
+    IsFull                                   0x08002a69   Thumb Code    16  queue_dgus_rx.o(i.IsFull)
+    MEASUREMENT_CALCULATION                  0x08002a7d   Thumb Code   298  measurement.o(i.MEASUREMENT_CALCULATION)
+    MULTI_PURPOSE_TIMER                      0x08002bd5   Thumb Code   220  time_handler.o(i.MULTI_PURPOSE_TIMER)
+    MX_ADC_Init                              0x08002cc9   Thumb Code   136  adc.o(i.MX_ADC_Init)
+    MX_DMA_Init                              0x08002d59   Thumb Code    52  dma.o(i.MX_DMA_Init)
+    MX_GPIO_Init                             0x08002d91   Thumb Code   230  gpio.o(i.MX_GPIO_Init)
+    MX_TIM1_Init                             0x08002e91   Thumb Code   202  tim.o(i.MX_TIM1_Init)
+    MX_TIM3_Init                             0x08002f69   Thumb Code    98  tim.o(i.MX_TIM3_Init)
+    MX_USART1_UART_Init                      0x08002fd5   Thumb Code    48  usart.o(i.MX_USART1_UART_Init)
+    NMI_Handler                              0x0800300d   Thumb Code     2  stm32f0xx_it.o(i.NMI_Handler)
+    OFF_CURRENT                              0x08003055   Thumb Code    18  firing.o(i.OFF_CURRENT)
+    PIDController_Update                     0x08003075   Thumb Code   226  pid.o(i.PIDController_Update)
+    Pause_Operation                          0x08003159   Thumb Code     8  time_based_table_operation.o(i.Pause_Operation)
+    PendSV_Handler                           0x08003165   Thumb Code     2  stm32f0xx_it.o(i.PendSV_Handler)
+    Process_Runing                           0x08003169   Thumb Code   124  application.o(i.Process_Runing)
+    RELAYS_OPERATION                         0x08003209   Thumb Code   322  application.o(i.RELAYS_OPERATION)
+    Read_All_Signals                         0x0800335d   Thumb Code    98  application.o(i.Read_All_Signals)
+    Resume_Operation                         0x080033d1   Thumb Code     8  time_based_table_operation.o(i.Resume_Operation)
+    SEND_TO_HMI                              0x080033dd   Thumb Code    40  hmi_communication.o(i.SEND_TO_HMI)
+    SVC_Handler                              0x0800340d   Thumb Code     2  stm32f0xx_it.o(i.SVC_Handler)
+    SerialEvent                              0x08003411   Thumb Code   140  hmi_communication.o(i.SerialEvent)
+    Start_Operation                          0x080034a9   Thumb Code    28  time_based_table_operation.o(i.Start_Operation)
+    Stop_Operation                           0x080034cd   Thumb Code    20  time_based_table_operation.o(i.Stop_Operation)
+    Store_Value                              0x080034e9   Thumb Code    88  measurement_history.o(i.Store_Value)
+    SysTick_Handler                          0x08003551   Thumb Code     8  stm32f0xx_it.o(i.SysTick_Handler)
+    SystemClock_Config                       0x08003559   Thumb Code    92  main.o(i.SystemClock_Config)
+    SystemInit                               0x080035b5   Thumb Code    78  system_stm32f0xx.o(i.SystemInit)
+    TIM3_IRQHandler                          0x08003611   Thumb Code    10  stm32f0xx_it.o(i.TIM3_IRQHandler)
+    TIM_Base_SetConfig                       0x08003621   Thumb Code   124  stm32f0xx_hal_tim.o(i.TIM_Base_SetConfig)
+    TIM_CCxChannelCmd                        0x080036b5   Thumb Code    22  stm32f0xx_hal_tim.o(i.TIM_CCxChannelCmd)
+    TIM_ETR_SetConfig                        0x080036cb   Thumb Code    22  stm32f0xx_hal_tim.o(i.TIM_ETR_SetConfig)
+    TIM_OC2_SetConfig                        0x08003779   Thumb Code   110  stm32f0xx_hal_tim.o(i.TIM_OC2_SetConfig)
+    UART_AdvFeatureConfig                    0x08003931   Thumb Code   202  stm32f0xx_hal_uart.o(i.UART_AdvFeatureConfig)
+    UART_CheckIdleState                      0x080039fd   Thumb Code    96  stm32f0xx_hal_uart.o(i.UART_CheckIdleState)
+    UART_EndTransmit_IT                      0x08003b65   Thumb Code    26  stm32f0xx_hal_uart.o(i.UART_EndTransmit_IT)
+    UART_Receive_IT                          0x08003b91   Thumb Code   122  stm32f0xx_hal_uart.o(i.UART_Receive_IT)
+    UART_SetConfig                           0x08003c0d   Thumb Code   280  stm32f0xx_hal_uart.o(i.UART_SetConfig)
+    UART_Transmit_IT                         0x08003d3d   Thumb Code   102  stm32f0xx_hal_uart.o(i.UART_Transmit_IT)
+    UART_WaitOnFlagUntilTimeout              0x08003da3   Thumb Code    98  stm32f0xx_hal_uart.o(i.UART_WaitOnFlagUntilTimeout)
+    USART1_IRQHandler                        0x08003e05   Thumb Code    10  stm32f0xx_it.o(i.USART1_IRQHandler)
+    __ARM_clz                                0x08003e15   Thumb Code    46  depilogue.o(i.__ARM_clz)
+    __ARM_common_switch8                     0x08003e43   Thumb Code    26  application.o(i.__ARM_common_switch8)
+    __scatterload_copy                       0x08003e5d   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x08003e6b   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08003e6d   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    all_contactors_updated                   0x08003e7d   Thumb Code    30  application.o(i.all_contactors_updated)
+    auto_calibration                         0x08003ea5   Thumb Code   298  measurement.o(i.auto_calibration)
+    auto_operation                           0x08003fd1   Thumb Code    50  auto_mode.o(i.auto_operation)
+    calculate_array_of_currents              0x08004011   Thumb Code    72  auto_mode.o(i.calculate_array_of_currents)
+    calculate_average_for_display            0x08004065   Thumb Code   164  measurement.o(i.calculate_average_for_display)
+    calculate_difference_array               0x08004111   Thumb Code    32  auto_mode.o(i.calculate_difference_array)
+    calculate_possible_probabilities         0x08004139   Thumb Code    64  auto_mode.o(i.calculate_possible_probabilities)
+    calculate_process_begin_end              0x0800417d   Thumb Code    64  auto_mode.o(i.calculate_process_begin_end)
+    calculate_total_capacity                 0x080041c1   Thumb Code    32  capacity_measurement.o(i.calculate_total_capacity)
+    capacity_start_calculations              0x080041e5   Thumb Code    12  capacity_measurement.o(i.capacity_start_calculations)
+    check_end_voltage_limitation             0x080041f5   Thumb Code    48  auto_mode.o(i.check_end_voltage_limitation)
+    check_input_current_limits               0x08004231   Thumb Code   156  auto_mode.o(i.check_input_current_limits)
+    determine_pwm_value                      0x080042d9   Thumb Code    74  auto_mode.o(i.determine_pwm_value)
+    display_measure_history                  0x08004335   Thumb Code    72  measurement_history.o(i.display_measure_history)
+    find_best_choice                         0x08004381   Thumb Code    76  auto_mode.o(i.find_best_choice)
+    firing                                   0x080043d5   Thumb Code   144  firing.o(i.firing)
+    flashing_registeration                   0x08004485   Thumb Code   134  hmi_handler.o(i.flashing_registeration)
+    get_capacity_and_stop_calculations       0x08004515   Thumb Code    48  capacity_measurement.o(i.get_capacity_and_stop_calculations)
+    initiate_multiset_point_mode             0x08004549   Thumb Code    56  auto_mode.o(i.initiate_multiset_point_mode)
+    main                                     0x08004589   Thumb Code    80  main.o(i.main)
+    measure_10_msec                          0x080045dd   Thumb Code    66  measurement.o(i.measure_10_msec)
+    measure_start_dma_adc                    0x08004629   Thumb Code    26  measurement.o(i.measure_start_dma_adc)
+    measure_timer_it                         0x08004651   Thumb Code    56  measurement.o(i.measure_timer_it)
+    multi_set_point_operation                0x08004691   Thumb Code   354  auto_mode.o(i.multi_set_point_operation)
+    on_the_suitable_steps                    0x08004805   Thumb Code    40  auto_mode.o(i.on_the_suitable_steps)
+    read_next_address_without_dequeue        0x08004835   Thumb Code    36  queue_dgus_rx.o(i.read_next_address_without_dequeue)
+    refresh_hmi_screen_while_unpushed        0x08004861   Thumb Code    30  hmi_handler.o(i.refresh_hmi_screen_while_unpushed)
+    replace                                  0x08004885   Thumb Code    10  auto_mode.o(i.replace)
+    search_if_any_step_on                    0x08004891   Thumb Code    24  application.o(i.search_if_any_step_on)
+    search_on_queue                          0x080048ad   Thumb Code   120  queue_dgus_rx.o(i.search_on_queue)
+    send_tx_queue_hmi_communication          0x0800492d   Thumb Code   276  hmi_communication.o(i.send_tx_queue_hmi_communication)
+    set_half_sec_counter                     0x08004a51   Thumb Code     6  time_handler.o(i.set_half_sec_counter)
+    start_hmi_uart                           0x08004a5d   Thumb Code    14  hmi_communication.o(i.start_hmi_uart)
+    update_operation                         0x08004a75   Thumb Code   208  auto_mode.o(i.update_operation)
+    update_steps_and_pwm                     0x08004b51   Thumb Code   122  application.o(i.update_steps_and_pwm)
+    AHBPrescTable                            0x08004be4   Data          16  system_stm32f0xx.o(.constdata)
+    APBPrescTable                            0x08004bf4   Data           8  system_stm32f0xx.o(.constdata)
+    Region$$Table$$Base                      0x08004bfc   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08004c1c   Number         0  anon$$obj.o(Region$$Table)
     STOP_FIXED_STEPS_FLAG                    0x20000000   Data           1  application.o(.data)
     correction_value                         0x20000002   Data           2  application.o(.data)
     Input_Array                              0x20000008   Data           8  application.o(.data)
@@ -2242,105 +2250,106 @@ Image Symbol Table
     calibration_array_in_voltage             0x20000068   Data          80  arrays_calibration_firing.o(.data)
     single_setpoint_flag                     0x200000b8   Data           1  auto_mode.o(.data)
     user_defined_process_begining            0x200000b9   Data           1  auto_mode.o(.data)
-    user_defined_process_ending              0x200000ba   Data           1  auto_mode.o(.data)
-    multi_set_point_status_flag              0x200000bb   Data           1  auto_mode.o(.data)
-    counter_of_no_of_entered_process         0x200000bc   Data           1  auto_mode.o(.data)
-    UPDATE_FINE_TUNE_OPERATION_IN_AUTO_MODE  0x200000bd   Data           1  auto_mode.o(.data)
-    mode                                     0x200000be   Data           1  auto_mode.o(.data)
-    process_begin                            0x200000bf   Data           1  auto_mode.o(.data)
-    process_end                              0x200000c0   Data           1  auto_mode.o(.data)
-    limit_of_end_voltage                     0x200000c1   Data           1  auto_mode.o(.data)
-    prev_id                                  0x200000c2   Data           1  auto_mode.o(.data)
-    pid_fine_tune_value                      0x200000c6   Data           2  auto_mode.o(.data)
-    current_setting                          0x200000c8   Data           2  auto_mode.o(.data)
-    best_index                               0x200000ca   Data           2  auto_mode.o(.data)
-    I_fine_tune_total                        0x200000cc   Data           4  auto_mode.o(.data)
-    yy                                       0x200000d0   Data           4  auto_mode.o(.data)
-    yyy                                      0x200000d4   Data           4  auto_mode.o(.data)
-    R_fine_tune_total                        0x200000d8   Data           8  auto_mode.o(.data)
-    R                                        0x200000e0   Data          64  auto_mode.o(.data)
-    hmi_auto_mode_flag                       0x20000120   Data           1  auto_mode.o(.data)
-    sd_card_auto_mode_flag                   0x20000121   Data           1  auto_mode.o(.data)
-    new_firing_order_flag                    0x20000122   Data           1  firing.o(.data)
-    START_FINE_TUNE_OPERATION_IN_MANUAL_MODE 0x20000123   Data           1  firing.o(.data)
-    manual_fine_tune_step_value              0x20000124   Data           2  firing.o(.data)
-    pwm_value                                0x20000126   Data           2  firing.o(.data)
-    FRAMES_RX_FLAG                           0x20000128   Data           1  hmi_communication.o(.data)
-    rx_buff                                  0x20000129   Data           1  hmi_communication.o(.data)
-    read                                     0x2000012a   Data           1  hmi_communication.o(.data)
-    no_of_messeges                           0x2000012b   Data           1  hmi_communication.o(.data)
-    write                                    0x2000012f   Data           1  hmi_communication.o(.data)
-    rx_flag                                  0x20000130   Data           1  hmi_communication.o(.data)
-    Address                                  0x20000134   Data           4  hmi_communication.o(.data)
-    Value                                    0x20000138   Data           4  hmi_communication.o(.data)
-    text_array                               0x2000013c   Data          39  hmi_communication.o(.data)
-    problem                                  0x20000163   Data           1  hmi_communication.o(.data)
-    beepbeep_time                            0x20000164   Data           1  hmi_handler.o(.data)
-    new_current_unpushed_flag                0x20000165   Data           1  hmi_handler.o(.data)
-    counter_of_flashing_addresses            0x20000166   Data           1  hmi_handler.o(.data)
-    STEP_STATE_ARRAY                         0x20000168   Data           8  hmi_handler.o(.data)
-    steps_hmi_addresses_array                0x20000170   Data          32  hmi_handler.o(.data)
-    start_calculating_flag                   0x20000190   Data           1  measurement.o(.data)
-    complete_measure_flag_for_display        0x20000191   Data           1  measurement.o(.data)
-    complete_measure_flag_for_end_voltage    0x20000192   Data           1  measurement.o(.data)
-    complete_measure_flag_for_pid            0x20000193   Data           1  measurement.o(.data)
-    counter_display                          0x20000194   Data           1  measurement.o(.data)
-    samples_counter                          0x20000196   Data           2  measurement.o(.data)
-    total_measured_ampere_for_display        0x20000198   Data           2  measurement.o(.data)
-    total_measured_ampere                    0x2000019a   Data           2  measurement.o(.data)
-    value_for_diplay                         0x200001a0   Data           2  measurement.o(.data)
-    accumulator_total_measured_ampere_for_display 0x200001a4   Data           4  measurement.o(.data)
-    R_MEASURED_FINE_TUNE                     0x200001a8   Data           4  measurement.o(.data)
-    x                                        0x200001ac   Data           6  measurement.o(.data)
-    AVERAGE_ADC_IN_REEL_UNIT                 0x200001b2   Data           6  measurement.o(.data)
-    accumlated_samples_per_channel           0x200001b8   Data           8  measurement.o(.data)
-    error_flag                               0x200001c0   Data           1  queue_dgus_rx.o(.data)
-    block                                    0x200001c1   Data           1  queue_dgus_rx.o(.data)
-    messeges_count                           0x200001c4   Data           4  queue_dgus_rx.o(.data)
-    front                                    0x200001c8   Data           4  queue_dgus_rx.o(.data)
-    rear                                     0x200001cc   Data           4  queue_dgus_rx.o(.data)
-    _500miles_flag                           0x200001d0   Data           1  time_handler.o(.data)
-    _1mile_flag                              0x200001d1   Data           1  time_handler.o(.data)
-    _3mile_flag                              0x200001d2   Data           1  time_handler.o(.data)
-    _10miles_flag                            0x200001d3   Data           1  time_handler.o(.data)
-    _100miles_flag                           0x200001d4   Data           1  time_handler.o(.data)
-    enque_counter                            0x200001d5   Data           1  time_handler.o(.data)
-    half_seconds_counter                     0x200001d6   Data           2  time_handler.o(.data)
-    FAN_STOP_counter                         0x200001d8   Data           2  time_handler.o(.data)
-    counter_of_100_micros_for_general_use    0x200001dc   Data           4  time_handler.o(.data)
-    counter_next_prev                        0x200001e4   Data           1  measurement_history.o(.data)
-    record_on_flag                           0x200001e5   Data           1  measurement_history.o(.data)
-    variable                                 0x200001e6   Data           1  measurement_history.o(.data)
-    half_sec_count_history                   0x200001e8   Data           2  measurement_history.o(.data)
-    Current_Duration_Data                    0x200001f8   Data           4  time_based_table_operation.o(.data)
-    uwTick                                   0x200001fc   Data           4  stm32f0xx_hal.o(.data)
-    SystemCoreClock                          0x20000200   Data           4  system_stm32f0xx.o(.data)
-    current_and_time_values_array            0x20000204   Data         144  auto_mode.o(.bss)
-    array_of_currents                        0x20000294   Data          32  auto_mode.o(.bss)
-    array_of_possible_probabilities          0x200002b4   Data         512  auto_mode.o(.bss)
-    array_of_diffirence                      0x200004b4   Data        1024  auto_mode.o(.bss)
-    rx_array                                 0x200008b4   Data          24  hmi_communication.o(.bss)
-    displayed_hmi_values                     0x20000930   Data         294  hmi_handler.o(.bss)
-    array_of_flashing_adresses               0x20000a56   Data          64  hmi_handler.o(.bss)
-    sum_sample                               0x20000a98   Data          24  measurement.o(.bss)
-    accumlated_summtion                      0x20000ab0   Data          24  measurement.o(.bss)
-    AVERAGE_ADC                              0x20000ac8   Data          12  measurement.o(.bss)
-    measure_accumulator_value                0x20000ad8   Data          24  measurement.o(.bss)
-    accumulator_display                      0x20000af0   Data          12  measurement.o(.bss)
-    fixed_steps_measured_currents            0x20000afc   Data          32  measurement.o(.bss)
-    sample                                   0x20000b1c   Data          12  measurement.o(.bss)
-    pid                                      0x20000b28   Data          56  pid.o(.bss)
-    A                                        0x20000b60   Data         808  queue_dgus_rx.o(.bss)
-    array_current                            0x20000e88   Data         144  measurement_history.o(.bss)
-    array_volt                               0x20000f18   Data         144  measurement_history.o(.bss)
-    hadc                                     0x20000fb4   Data          76  adc.o(.bss)
-    hdma_adc                                 0x20001000   Data          68  adc.o(.bss)
-    htim1                                    0x20001044   Data          64  tim.o(.bss)
-    htim3                                    0x20001084   Data          64  tim.o(.bss)
-    huart1                                   0x200010c4   Data         112  usart.o(.bss)
-    hdma_usart1_tx                           0x20001134   Data          68  usart.o(.bss)
-    hdma_usart1_rx                           0x20001178   Data          68  usart.o(.bss)
-    __initial_sp                             0x200015c0   Data           0  startup_stm32f051x8.o(STACK)
+    sd_card_user_defined_process_begining    0x200000ba   Data           1  auto_mode.o(.data)
+    user_defined_process_ending              0x200000bb   Data           1  auto_mode.o(.data)
+    multi_set_point_status_flag              0x200000bc   Data           1  auto_mode.o(.data)
+    counter_of_no_of_entered_process         0x200000bd   Data           1  auto_mode.o(.data)
+    UPDATE_FINE_TUNE_OPERATION_IN_AUTO_MODE  0x200000be   Data           1  auto_mode.o(.data)
+    mode                                     0x200000bf   Data           1  auto_mode.o(.data)
+    hmi_process_begin                        0x200000c0   Data           1  auto_mode.o(.data)
+    hmi_process_end                          0x200000c1   Data           1  auto_mode.o(.data)
+    sd_card_process_begin                    0x200000c2   Data           1  auto_mode.o(.data)
+    limit_of_end_voltage                     0x200000c3   Data           1  auto_mode.o(.data)
+    auto_mode_data_source                    0x200000c4   Data           1  auto_mode.o(.data)
+    prev_id                                  0x200000c5   Data           1  auto_mode.o(.data)
+    pid_fine_tune_value                      0x200000c8   Data           2  auto_mode.o(.data)
+    current_setting                          0x200000ca   Data           2  auto_mode.o(.data)
+    best_index                               0x200000cc   Data           2  auto_mode.o(.data)
+    I_fine_tune_total                        0x200000d0   Data           4  auto_mode.o(.data)
+    yy                                       0x200000d4   Data           4  auto_mode.o(.data)
+    yyy                                      0x200000d8   Data           4  auto_mode.o(.data)
+    R_fine_tune_total                        0x200000e0   Data           8  auto_mode.o(.data)
+    R                                        0x200000e8   Data          64  auto_mode.o(.data)
+    new_firing_order_flag                    0x20000128   Data           1  firing.o(.data)
+    START_FINE_TUNE_OPERATION_IN_MANUAL_MODE 0x20000129   Data           1  firing.o(.data)
+    manual_fine_tune_step_value              0x2000012a   Data           2  firing.o(.data)
+    pwm_value                                0x2000012c   Data           2  firing.o(.data)
+    FRAMES_RX_FLAG                           0x20000130   Data           1  hmi_communication.o(.data)
+    rx_buff                                  0x20000131   Data           1  hmi_communication.o(.data)
+    read                                     0x20000132   Data           1  hmi_communication.o(.data)
+    no_of_messeges                           0x20000133   Data           1  hmi_communication.o(.data)
+    write                                    0x20000137   Data           1  hmi_communication.o(.data)
+    rx_flag                                  0x20000138   Data           1  hmi_communication.o(.data)
+    Address                                  0x2000013c   Data           4  hmi_communication.o(.data)
+    Value                                    0x20000140   Data           4  hmi_communication.o(.data)
+    text_array                               0x20000144   Data          39  hmi_communication.o(.data)
+    problem                                  0x2000016b   Data           1  hmi_communication.o(.data)
+    beepbeep_time                            0x2000016c   Data           1  hmi_handler.o(.data)
+    new_current_unpushed_flag                0x2000016d   Data           1  hmi_handler.o(.data)
+    counter_of_flashing_addresses            0x2000016e   Data           1  hmi_handler.o(.data)
+    STEP_STATE_ARRAY                         0x20000170   Data           8  hmi_handler.o(.data)
+    steps_hmi_addresses_array                0x20000178   Data          32  hmi_handler.o(.data)
+    start_calculating_flag                   0x20000198   Data           1  measurement.o(.data)
+    complete_measure_flag_for_display        0x20000199   Data           1  measurement.o(.data)
+    complete_measure_flag_for_end_voltage    0x2000019a   Data           1  measurement.o(.data)
+    complete_measure_flag_for_pid            0x2000019b   Data           1  measurement.o(.data)
+    counter_display                          0x2000019c   Data           1  measurement.o(.data)
+    samples_counter                          0x2000019e   Data           2  measurement.o(.data)
+    total_measured_ampere_for_display        0x200001a0   Data           2  measurement.o(.data)
+    total_measured_ampere                    0x200001a2   Data           2  measurement.o(.data)
+    value_for_diplay                         0x200001a8   Data           2  measurement.o(.data)
+    accumulator_total_measured_ampere_for_display 0x200001ac   Data           4  measurement.o(.data)
+    R_MEASURED_FINE_TUNE                     0x200001b0   Data           4  measurement.o(.data)
+    x                                        0x200001b4   Data           6  measurement.o(.data)
+    AVERAGE_ADC_IN_REEL_UNIT                 0x200001ba   Data           6  measurement.o(.data)
+    accumlated_samples_per_channel           0x200001c0   Data           8  measurement.o(.data)
+    error_flag                               0x200001c8   Data           1  queue_dgus_rx.o(.data)
+    block                                    0x200001c9   Data           1  queue_dgus_rx.o(.data)
+    messeges_count                           0x200001cc   Data           4  queue_dgus_rx.o(.data)
+    front                                    0x200001d0   Data           4  queue_dgus_rx.o(.data)
+    rear                                     0x200001d4   Data           4  queue_dgus_rx.o(.data)
+    _500miles_flag                           0x200001d8   Data           1  time_handler.o(.data)
+    _1mile_flag                              0x200001d9   Data           1  time_handler.o(.data)
+    _3mile_flag                              0x200001da   Data           1  time_handler.o(.data)
+    _10miles_flag                            0x200001db   Data           1  time_handler.o(.data)
+    _100miles_flag                           0x200001dc   Data           1  time_handler.o(.data)
+    enque_counter                            0x200001dd   Data           1  time_handler.o(.data)
+    half_seconds_counter                     0x200001de   Data           2  time_handler.o(.data)
+    FAN_STOP_counter                         0x200001e0   Data           2  time_handler.o(.data)
+    counter_of_100_micros_for_general_use    0x200001e4   Data           4  time_handler.o(.data)
+    counter_next_prev                        0x200001ec   Data           1  measurement_history.o(.data)
+    record_on_flag                           0x200001ed   Data           1  measurement_history.o(.data)
+    variable                                 0x200001ee   Data           1  measurement_history.o(.data)
+    half_sec_count_history                   0x200001f0   Data           2  measurement_history.o(.data)
+    Current_Duration_Data                    0x20000200   Data           4  time_based_table_operation.o(.data)
+    uwTick                                   0x20000214   Data           4  stm32f0xx_hal.o(.data)
+    SystemCoreClock                          0x20000218   Data           4  system_stm32f0xx.o(.data)
+    hmi_current_time_and_capacity_values_array 0x2000021c   Data         432  auto_mode.o(.bss)
+    array_of_currents                        0x200003cc   Data          32  auto_mode.o(.bss)
+    array_of_possible_probabilities          0x200003ec   Data         512  auto_mode.o(.bss)
+    array_of_diffirence                      0x200005ec   Data        1024  auto_mode.o(.bss)
+    rx_array                                 0x200009ec   Data          24  hmi_communication.o(.bss)
+    displayed_hmi_values                     0x20000a68   Data         294  hmi_handler.o(.bss)
+    array_of_flashing_adresses               0x20000b8e   Data          64  hmi_handler.o(.bss)
+    sum_sample                               0x20000bd0   Data          24  measurement.o(.bss)
+    accumlated_summtion                      0x20000be8   Data          24  measurement.o(.bss)
+    AVERAGE_ADC                              0x20000c00   Data          12  measurement.o(.bss)
+    measure_accumulator_value                0x20000c10   Data          24  measurement.o(.bss)
+    accumulator_display                      0x20000c28   Data          12  measurement.o(.bss)
+    fixed_steps_measured_currents            0x20000c34   Data          32  measurement.o(.bss)
+    sample                                   0x20000c54   Data          12  measurement.o(.bss)
+    pid                                      0x20000c60   Data          56  pid.o(.bss)
+    A                                        0x20000c98   Data         808  queue_dgus_rx.o(.bss)
+    array_current                            0x20000fc0   Data         144  measurement_history.o(.bss)
+    array_volt                               0x20001050   Data         144  measurement_history.o(.bss)
+    hadc                                     0x200010ec   Data          76  adc.o(.bss)
+    hdma_adc                                 0x20001138   Data          68  adc.o(.bss)
+    htim1                                    0x2000117c   Data          64  tim.o(.bss)
+    htim3                                    0x200011bc   Data          64  tim.o(.bss)
+    huart1                                   0x200011fc   Data         112  usart.o(.bss)
+    hdma_usart1_tx                           0x2000126c   Data          68  usart.o(.bss)
+    hdma_usart1_rx                           0x200012b0   Data          68  usart.o(.bss)
+    __initial_sp                             0x200016f8   Data           0  startup_stm32f051x8.o(STACK)
 
 
 
@@ -2350,9 +2359,9 @@ Memory Map of the image
 
   Image Entry point : 0x080000bd
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00004d50, Max: 0x00010000, ABSOLUTE, COMPRESSED[0x00004c20])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00004e38, Max: 0x00010000, ABSOLUTE, COMPRESSED[0x00004cf4])
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004b4c, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00004c1c, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2410,21 +2419,21 @@ Memory Map of the image
     0x08000b2c   0x08000b2c   0x0000001a   Code   RO         1346    i.ADC_DMAError      stm32f0xx_hal_adc.o
     0x08000b46   0x08000b46   0x0000000a   Code   RO         1347    i.ADC_DMAHalfConvCplt  stm32f0xx_hal_adc.o
     0x08000b50   0x08000b50   0x00000084   Code   RO         1349    i.ADC_Enable        stm32f0xx_hal_adc.o
-    0x08000bd4   0x08000bd4   0x00000028   Code   RO          499    i.DISPLAY_MEASUREMENT  hmi_handler.o
+    0x08000bd4   0x08000bd4   0x00000028   Code   RO          502    i.DISPLAY_MEASUREMENT  hmi_handler.o
     0x08000bfc   0x08000bfc   0x00000010   Code   RO         1247    i.DMA1_Channel1_IRQHandler  stm32f0xx_it.o
     0x08000c0c   0x08000c0c   0x00000018   Code   RO         1248    i.DMA1_Channel2_3_IRQHandler  stm32f0xx_it.o
     0x08000c24   0x08000c24   0x00000024   Code   RO         3617    i.DMA_CalcBaseAndBitshift  stm32f0xx_hal_dma.o
     0x08000c48   0x08000c48   0x00000028   Code   RO         3618    i.DMA_SetConfig     stm32f0xx_hal_dma.o
-    0x08000c70   0x08000c70   0x00000058   Code   RO          711    i.Dequeue           queue_dgus_rx.o
-    0x08000cc8   0x08000cc8   0x00000044   Code   RO          864    i.Duration_Counter_Process  time_based_table_operation.o
-    0x08000d0c   0x08000d0c   0x00000064   Code   RO          712    i.Enqueue           queue_dgus_rx.o
+    0x08000c70   0x08000c70   0x00000058   Code   RO          714    i.Dequeue           queue_dgus_rx.o
+    0x08000cc8   0x08000cc8   0x00000044   Code   RO          867    i.Duration_Counter_Process  time_based_table_operation.o
+    0x08000d0c   0x08000d0c   0x00000064   Code   RO          715    i.Enqueue           queue_dgus_rx.o
     0x08000d70   0x08000d70   0x00000002   Code   RO         1036    i.Error_Handler     main.o
     0x08000d72   0x08000d72   0x00000002   PAD
-    0x08000d74   0x08000d74   0x00000070   Code   RO          500    i.FLASH_ON_HMI      hmi_handler.o
-    0x08000de4   0x08000de4   0x00000010   Code   RO          865    i.Get_Interval_Currentstatus  time_based_table_operation.o
+    0x08000d74   0x08000d74   0x00000070   Code   RO          503    i.FLASH_ON_HMI      hmi_handler.o
+    0x08000de4   0x08000de4   0x00000010   Code   RO          868    i.Get_Interval_Currentstatus  time_based_table_operation.o
     0x08000df4   0x08000df4   0x000000b0   Code   RO         1520    i.HAL_ADCEx_Calibration_Start  stm32f0xx_hal_adc_ex.o
     0x08000ea4   0x08000ea4   0x0000012c   Code   RO         1351    i.HAL_ADC_ConfigChannel  stm32f0xx_hal_adc.o
-    0x08000fd0   0x08000fd0   0x00000008   Code   RO          562    i.HAL_ADC_ConvCpltCallback  measurement.o
+    0x08000fd0   0x08000fd0   0x00000008   Code   RO          565    i.HAL_ADC_ConvCpltCallback  measurement.o
     0x08000fd8   0x08000fd8   0x00000002   Code   RO         1353    i.HAL_ADC_ConvHalfCpltCallback  stm32f0xx_hal_adc.o
     0x08000fda   0x08000fda   0x00000002   Code   RO         1355    i.HAL_ADC_ErrorCallback  stm32f0xx_hal_adc.o
     0x08000fdc   0x08000fdc   0x000000d0   Code   RO         1359    i.HAL_ADC_IRQHandler  stm32f0xx_hal_adc.o
@@ -2477,7 +2486,7 @@ Memory Map of the image
     0x0800226a   0x0800226a   0x00000002   PAD
     0x0800226c   0x0800226c   0x00000050   Code   RO         1617    i.HAL_TIM_PWM_Start  stm32f0xx_hal_tim.o
     0x080022bc   0x080022bc   0x00000074   Code   RO         1620    i.HAL_TIM_PWM_Stop  stm32f0xx_hal_tim.o
-    0x08002330   0x08002330   0x0000006c   Code   RO          764    i.HAL_TIM_PeriodElapsedCallback  time_handler.o
+    0x08002330   0x08002330   0x0000006c   Code   RO          767    i.HAL_TIM_PeriodElapsedCallback  time_handler.o
     0x0800239c   0x0800239c   0x00000002   Code   RO         1627    i.HAL_TIM_TriggerCallback  stm32f0xx_hal_tim.o
     0x0800239e   0x0800239e   0x00000002   Code   RO         2765    i.HAL_UARTEx_WakeupCallback  stm32f0xx_hal_uart_ex.o
     0x080023a0   0x080023a0   0x00000002   Code   RO         2440    i.HAL_UART_ErrorCallback  stm32f0xx_hal_uart.o
@@ -2486,162 +2495,165 @@ Memory Map of the image
     0x080024d8   0x080024d8   0x0000006c   Code   RO         2444    i.HAL_UART_Init     stm32f0xx_hal_uart.o
     0x08002544   0x08002544   0x000000d0   Code   RO         1209    i.HAL_UART_MspInit  usart.o
     0x08002614   0x08002614   0x000000a4   Code   RO         2448    i.HAL_UART_Receive_DMA  stm32f0xx_hal_uart.o
-    0x080026b8   0x080026b8   0x00000068   Code   RO          431    i.HAL_UART_RxCpltCallback  hmi_communication.o
+    0x080026b8   0x080026b8   0x00000068   Code   RO          434    i.HAL_UART_RxCpltCallback  hmi_communication.o
     0x08002720   0x08002720   0x00000002   Code   RO         2451    i.HAL_UART_RxHalfCpltCallback  stm32f0xx_hal_uart.o
     0x08002722   0x08002722   0x00000002   PAD
     0x08002724   0x08002724   0x00000098   Code   RO         2453    i.HAL_UART_Transmit_DMA  stm32f0xx_hal_uart.o
     0x080027bc   0x080027bc   0x00000002   Code   RO         2455    i.HAL_UART_TxCpltCallback  stm32f0xx_hal_uart.o
     0x080027be   0x080027be   0x00000002   Code   RO         2456    i.HAL_UART_TxHalfCpltCallback  stm32f0xx_hal_uart.o
-    0x080027c0   0x080027c0   0x000001d4   Code   RO          501    i.HMI_Addresses     hmi_handler.o
-    0x08002994   0x08002994   0x00000002   Code   RO         1249    i.HardFault_Handler  stm32f0xx_it.o
-    0x08002996   0x08002996   0x00000002   PAD
-    0x08002998   0x08002998   0x00000050   Code   RO           13    i.ILLUMINATE_STEPS_ON_HMI  application.o
-    0x080029e8   0x080029e8   0x00000050   Code   RO          866    i.Interval_Switching_Action  time_based_table_operation.o
-    0x08002a38   0x08002a38   0x00000014   Code   RO          713    i.IsEmpty           queue_dgus_rx.o
-    0x08002a4c   0x08002a4c   0x00000014   Code   RO          714    i.IsFull            queue_dgus_rx.o
-    0x08002a60   0x08002a60   0x00000158   Code   RO          563    i.MEASUREMENT_CALCULATION  measurement.o
-    0x08002bb8   0x08002bb8   0x000000f4   Code   RO          765    i.MULTI_PURPOSE_TIMER  time_handler.o
-    0x08002cac   0x08002cac   0x00000090   Code   RO         1102    i.MX_ADC_Init       adc.o
-    0x08002d3c   0x08002d3c   0x00000038   Code   RO         1138    i.MX_DMA_Init       dma.o
-    0x08002d74   0x08002d74   0x00000100   Code   RO         1080    i.MX_GPIO_Init      gpio.o
-    0x08002e74   0x08002e74   0x000000d8   Code   RO         1161    i.MX_TIM1_Init      tim.o
-    0x08002f4c   0x08002f4c   0x0000006c   Code   RO         1162    i.MX_TIM3_Init      tim.o
-    0x08002fb8   0x08002fb8   0x00000038   Code   RO         1210    i.MX_USART1_UART_Init  usart.o
-    0x08002ff0   0x08002ff0   0x00000002   Code   RO         1250    i.NMI_Handler       stm32f0xx_it.o
-    0x08002ff2   0x08002ff2   0x00000002   PAD
-    0x08002ff4   0x08002ff4   0x00000044   Code   RO         3725    i.NVIC_SetPriority  stm32f0xx_hal_cortex.o
-    0x08003038   0x08003038   0x00000020   Code   RO          386    i.OFF_CURRENT       firing.o
-    0x08003058   0x08003058   0x000000e2   Code   RO          650    i.PIDController_Update  pid.o
-    0x0800313a   0x0800313a   0x00000002   PAD
-    0x0800313c   0x0800313c   0x0000000c   Code   RO          868    i.Pause_Operation   time_based_table_operation.o
-    0x08003148   0x08003148   0x00000002   Code   RO         1251    i.PendSV_Handler    stm32f0xx_it.o
-    0x0800314a   0x0800314a   0x00000002   PAD
-    0x0800314c   0x0800314c   0x000000a0   Code   RO           14    i.Process_Runing    application.o
-    0x080031ec   0x080031ec   0x00000154   Code   RO           15    i.RELAYS_OPERATION  application.o
-    0x08003340   0x08003340   0x00000074   Code   RO           16    i.Read_All_Signals  application.o
-    0x080033b4   0x080033b4   0x0000000c   Code   RO          869    i.Resume_Operation  time_based_table_operation.o
-    0x080033c0   0x080033c0   0x00000030   Code   RO          432    i.SEND_TO_HMI       hmi_communication.o
-    0x080033f0   0x080033f0   0x00000002   Code   RO         1252    i.SVC_Handler       stm32f0xx_it.o
-    0x080033f2   0x080033f2   0x00000002   PAD
-    0x080033f4   0x080033f4   0x00000098   Code   RO          433    i.SerialEvent       hmi_communication.o
-    0x0800348c   0x0800348c   0x00000024   Code   RO          870    i.Start_Operation   time_based_table_operation.o
-    0x080034b0   0x080034b0   0x0000001c   Code   RO          871    i.Stop_Operation    time_based_table_operation.o
-    0x080034cc   0x080034cc   0x00000068   Code   RO          807    i.Store_Value       measurement_history.o
-    0x08003534   0x08003534   0x00000008   Code   RO         1253    i.SysTick_Handler   stm32f0xx_it.o
-    0x0800353c   0x0800353c   0x0000005c   Code   RO         1037    i.SystemClock_Config  main.o
-    0x08003598   0x08003598   0x0000005c   Code   RO         4118    i.SystemInit        system_stm32f0xx.o
-    0x080035f4   0x080035f4   0x00000010   Code   RO         1254    i.TIM3_IRQHandler   stm32f0xx_it.o
-    0x08003604   0x08003604   0x00000094   Code   RO         1628    i.TIM_Base_SetConfig  stm32f0xx_hal_tim.o
-    0x08003698   0x08003698   0x00000016   Code   RO         1629    i.TIM_CCxChannelCmd  stm32f0xx_hal_tim.o
-    0x080036ae   0x080036ae   0x00000016   Code   RO         1635    i.TIM_ETR_SetConfig  stm32f0xx_hal_tim.o
-    0x080036c4   0x080036c4   0x00000010   Code   RO         1636    i.TIM_ITRx_SetConfig  stm32f0xx_hal_tim.o
-    0x080036d4   0x080036d4   0x00000088   Code   RO         1637    i.TIM_OC1_SetConfig  stm32f0xx_hal_tim.o
-    0x0800375c   0x0800375c   0x00000080   Code   RO         1638    i.TIM_OC2_SetConfig  stm32f0xx_hal_tim.o
-    0x080037dc   0x080037dc   0x00000084   Code   RO         1639    i.TIM_OC3_SetConfig  stm32f0xx_hal_tim.o
-    0x08003860   0x08003860   0x0000006c   Code   RO         1640    i.TIM_OC4_SetConfig  stm32f0xx_hal_tim.o
-    0x080038cc   0x080038cc   0x00000022   Code   RO         1642    i.TIM_TI1_ConfigInputStage  stm32f0xx_hal_tim.o
-    0x080038ee   0x080038ee   0x00000026   Code   RO         1644    i.TIM_TI2_ConfigInputStage  stm32f0xx_hal_tim.o
-    0x08003914   0x08003914   0x000000ca   Code   RO         2457    i.UART_AdvFeatureConfig  stm32f0xx_hal_uart.o
-    0x080039de   0x080039de   0x00000002   PAD
-    0x080039e0   0x080039e0   0x00000068   Code   RO         2458    i.UART_CheckIdleState  stm32f0xx_hal_uart.o
-    0x08003a48   0x08003a48   0x00000014   Code   RO         2459    i.UART_DMAAbortOnError  stm32f0xx_hal_uart.o
-    0x08003a5c   0x08003a5c   0x0000004a   Code   RO         2460    i.UART_DMAError     stm32f0xx_hal_uart.o
-    0x08003aa6   0x08003aa6   0x00000040   Code   RO         2461    i.UART_DMAReceiveCplt  stm32f0xx_hal_uart.o
-    0x08003ae6   0x08003ae6   0x0000000a   Code   RO         2463    i.UART_DMARxHalfCplt  stm32f0xx_hal_uart.o
-    0x08003af0   0x08003af0   0x00000030   Code   RO         2465    i.UART_DMATransmitCplt  stm32f0xx_hal_uart.o
-    0x08003b20   0x08003b20   0x0000000a   Code   RO         2467    i.UART_DMATxHalfCplt  stm32f0xx_hal_uart.o
-    0x08003b2a   0x08003b2a   0x0000001e   Code   RO         2469    i.UART_EndRxTransfer  stm32f0xx_hal_uart.o
-    0x08003b48   0x08003b48   0x0000001a   Code   RO         2470    i.UART_EndTransmit_IT  stm32f0xx_hal_uart.o
-    0x08003b62   0x08003b62   0x00000012   Code   RO         2471    i.UART_EndTxTransfer  stm32f0xx_hal_uart.o
-    0x08003b74   0x08003b74   0x0000007a   Code   RO         2472    i.UART_Receive_IT   stm32f0xx_hal_uart.o
-    0x08003bee   0x08003bee   0x00000002   PAD
-    0x08003bf0   0x08003bf0   0x00000130   Code   RO         2473    i.UART_SetConfig    stm32f0xx_hal_uart.o
-    0x08003d20   0x08003d20   0x00000066   Code   RO         2474    i.UART_Transmit_IT  stm32f0xx_hal_uart.o
-    0x08003d86   0x08003d86   0x00000062   Code   RO         2475    i.UART_WaitOnFlagUntilTimeout  stm32f0xx_hal_uart.o
-    0x08003de8   0x08003de8   0x00000010   Code   RO         1255    i.USART1_IRQHandler  stm32f0xx_it.o
-    0x08003df8   0x08003df8   0x0000002e   Code   RO         4231    i.__ARM_clz         mf_p.l(depilogue.o)
-    0x08003e26   0x08003e26   0x0000001a   Code   RO           74    i.__ARM_common_switch8  application.o
-    0x08003e40   0x08003e40   0x0000000e   Code   RO         4237    i.__scatterload_copy  mc_p.l(handlers.o)
-    0x08003e4e   0x08003e4e   0x00000002   Code   RO         4238    i.__scatterload_null  mc_p.l(handlers.o)
-    0x08003e50   0x08003e50   0x0000000e   Code   RO         4239    i.__scatterload_zeroinit  mc_p.l(handlers.o)
-    0x08003e5e   0x08003e5e   0x00000002   PAD
-    0x08003e60   0x08003e60   0x00000028   Code   RO           17    i.all_contactors_updated  application.o
-    0x08003e88   0x08003e88   0x0000012a   Code   RO          564    i.auto_calibration  measurement.o
-    0x08003fb2   0x08003fb2   0x00000002   PAD
-    0x08003fb4   0x08003fb4   0x00000040   Code   RO          247    i.auto_operation    auto_mode.o
-    0x08003ff4   0x08003ff4   0x00000054   Code   RO          248    i.calculate_array_of_currents  auto_mode.o
-    0x08004048   0x08004048   0x000000ac   Code   RO          565    i.calculate_average_for_display  measurement.o
-    0x080040f4   0x080040f4   0x00000028   Code   RO          249    i.calculate_difference_array  auto_mode.o
-    0x0800411c   0x0800411c   0x00000044   Code   RO          250    i.calculate_possible_probabilities  auto_mode.o
-    0x08004160   0x08004160   0x00000034   Code   RO          251    i.calculate_process_begin_end  auto_mode.o
-    0x08004194   0x08004194   0x0000003c   Code   RO          252    i.check_end_voltage_limitation  auto_mode.o
-    0x080041d0   0x080041d0   0x000000a8   Code   RO          253    i.check_input_current_limits  auto_mode.o
-    0x08004278   0x08004278   0x0000005c   Code   RO          254    i.determine_pwm_value  auto_mode.o
-    0x080042d4   0x080042d4   0x0000004c   Code   RO          810    i.display_measure_history  measurement_history.o
-    0x08004320   0x08004320   0x00000054   Code   RO          255    i.find_best_choice  auto_mode.o
-    0x08004374   0x08004374   0x000000b0   Code   RO          387    i.firing            firing.o
-    0x08004424   0x08004424   0x00000090   Code   RO          503    i.flashing_registeration  hmi_handler.o
-    0x080044b4   0x080044b4   0x00000040   Code   RO          256    i.initiate_multiset_point_mode  auto_mode.o
-    0x080044f4   0x080044f4   0x00000054   Code   RO         1039    i.main              main.o
-    0x08004548   0x08004548   0x0000004c   Code   RO          566    i.measure_10_msec   measurement.o
-    0x08004594   0x08004594   0x00000028   Code   RO          567    i.measure_start_dma_adc  measurement.o
-    0x080045bc   0x080045bc   0x00000040   Code   RO          568    i.measure_timer_it  measurement.o
-    0x080045fc   0x080045fc   0x00000174   Code   RO          257    i.multi_set_point_operation  auto_mode.o
-    0x08004770   0x08004770   0x00000030   Code   RO          258    i.on_the_suitable_steps  auto_mode.o
-    0x080047a0   0x080047a0   0x0000002c   Code   RO          715    i.read_next_address_without_dequeue  queue_dgus_rx.o
-    0x080047cc   0x080047cc   0x00000024   Code   RO          504    i.refresh_hmi_screen_while_unpushed  hmi_handler.o
-    0x080047f0   0x080047f0   0x0000000a   Code   RO          259    i.replace           auto_mode.o
-    0x080047fa   0x080047fa   0x00000002   PAD
-    0x080047fc   0x080047fc   0x0000001c   Code   RO           18    i.search_if_any_step_on  application.o
-    0x08004818   0x08004818   0x00000080   Code   RO          716    i.search_on_queue   queue_dgus_rx.o
-    0x08004898   0x08004898   0x00000124   Code   RO          434    i.send_tx_queue_hmi_communication  hmi_communication.o
-    0x080049bc   0x080049bc   0x0000000c   Code   RO          766    i.set_half_sec_counter  time_handler.o
-    0x080049c8   0x080049c8   0x00000018   Code   RO          435    i.start_hmi_uart    hmi_communication.o
-    0x080049e0   0x080049e0   0x000000a0   Code   RO          261    i.update_operation  auto_mode.o
-    0x08004a80   0x08004a80   0x00000094   Code   RO           19    i.update_steps_and_pwm  application.o
-    0x08004b14   0x08004b14   0x00000010   Data   RO         4119    .constdata          system_stm32f0xx.o
-    0x08004b24   0x08004b24   0x00000008   Data   RO         4120    .constdata          system_stm32f0xx.o
-    0x08004b2c   0x08004b2c   0x00000020   Data   RO         4235    Region$$Table       anon$$obj.o
+    0x080027c0   0x080027c0   0x000001e4   Code   RO          504    i.HMI_Addresses     hmi_handler.o
+    0x080029a4   0x080029a4   0x00000002   Code   RO         1249    i.HardFault_Handler  stm32f0xx_it.o
+    0x080029a6   0x080029a6   0x00000002   PAD
+    0x080029a8   0x080029a8   0x00000050   Code   RO           13    i.ILLUMINATE_STEPS_ON_HMI  application.o
+    0x080029f8   0x080029f8   0x0000005c   Code   RO          869    i.Interval_Switching_Action  time_based_table_operation.o
+    0x08002a54   0x08002a54   0x00000014   Code   RO          716    i.IsEmpty           queue_dgus_rx.o
+    0x08002a68   0x08002a68   0x00000014   Code   RO          717    i.IsFull            queue_dgus_rx.o
+    0x08002a7c   0x08002a7c   0x00000158   Code   RO          566    i.MEASUREMENT_CALCULATION  measurement.o
+    0x08002bd4   0x08002bd4   0x000000f4   Code   RO          768    i.MULTI_PURPOSE_TIMER  time_handler.o
+    0x08002cc8   0x08002cc8   0x00000090   Code   RO         1102    i.MX_ADC_Init       adc.o
+    0x08002d58   0x08002d58   0x00000038   Code   RO         1138    i.MX_DMA_Init       dma.o
+    0x08002d90   0x08002d90   0x00000100   Code   RO         1080    i.MX_GPIO_Init      gpio.o
+    0x08002e90   0x08002e90   0x000000d8   Code   RO         1161    i.MX_TIM1_Init      tim.o
+    0x08002f68   0x08002f68   0x0000006c   Code   RO         1162    i.MX_TIM3_Init      tim.o
+    0x08002fd4   0x08002fd4   0x00000038   Code   RO         1210    i.MX_USART1_UART_Init  usart.o
+    0x0800300c   0x0800300c   0x00000002   Code   RO         1250    i.NMI_Handler       stm32f0xx_it.o
+    0x0800300e   0x0800300e   0x00000002   PAD
+    0x08003010   0x08003010   0x00000044   Code   RO         3725    i.NVIC_SetPriority  stm32f0xx_hal_cortex.o
+    0x08003054   0x08003054   0x00000020   Code   RO          389    i.OFF_CURRENT       firing.o
+    0x08003074   0x08003074   0x000000e2   Code   RO          653    i.PIDController_Update  pid.o
+    0x08003156   0x08003156   0x00000002   PAD
+    0x08003158   0x08003158   0x0000000c   Code   RO          871    i.Pause_Operation   time_based_table_operation.o
+    0x08003164   0x08003164   0x00000002   Code   RO         1251    i.PendSV_Handler    stm32f0xx_it.o
+    0x08003166   0x08003166   0x00000002   PAD
+    0x08003168   0x08003168   0x000000a0   Code   RO           14    i.Process_Runing    application.o
+    0x08003208   0x08003208   0x00000154   Code   RO           15    i.RELAYS_OPERATION  application.o
+    0x0800335c   0x0800335c   0x00000074   Code   RO           16    i.Read_All_Signals  application.o
+    0x080033d0   0x080033d0   0x0000000c   Code   RO          872    i.Resume_Operation  time_based_table_operation.o
+    0x080033dc   0x080033dc   0x00000030   Code   RO          435    i.SEND_TO_HMI       hmi_communication.o
+    0x0800340c   0x0800340c   0x00000002   Code   RO         1252    i.SVC_Handler       stm32f0xx_it.o
+    0x0800340e   0x0800340e   0x00000002   PAD
+    0x08003410   0x08003410   0x00000098   Code   RO          436    i.SerialEvent       hmi_communication.o
+    0x080034a8   0x080034a8   0x00000024   Code   RO          873    i.Start_Operation   time_based_table_operation.o
+    0x080034cc   0x080034cc   0x0000001c   Code   RO          874    i.Stop_Operation    time_based_table_operation.o
+    0x080034e8   0x080034e8   0x00000068   Code   RO          810    i.Store_Value       measurement_history.o
+    0x08003550   0x08003550   0x00000008   Code   RO         1253    i.SysTick_Handler   stm32f0xx_it.o
+    0x08003558   0x08003558   0x0000005c   Code   RO         1037    i.SystemClock_Config  main.o
+    0x080035b4   0x080035b4   0x0000005c   Code   RO         4118    i.SystemInit        system_stm32f0xx.o
+    0x08003610   0x08003610   0x00000010   Code   RO         1254    i.TIM3_IRQHandler   stm32f0xx_it.o
+    0x08003620   0x08003620   0x00000094   Code   RO         1628    i.TIM_Base_SetConfig  stm32f0xx_hal_tim.o
+    0x080036b4   0x080036b4   0x00000016   Code   RO         1629    i.TIM_CCxChannelCmd  stm32f0xx_hal_tim.o
+    0x080036ca   0x080036ca   0x00000016   Code   RO         1635    i.TIM_ETR_SetConfig  stm32f0xx_hal_tim.o
+    0x080036e0   0x080036e0   0x00000010   Code   RO         1636    i.TIM_ITRx_SetConfig  stm32f0xx_hal_tim.o
+    0x080036f0   0x080036f0   0x00000088   Code   RO         1637    i.TIM_OC1_SetConfig  stm32f0xx_hal_tim.o
+    0x08003778   0x08003778   0x00000080   Code   RO         1638    i.TIM_OC2_SetConfig  stm32f0xx_hal_tim.o
+    0x080037f8   0x080037f8   0x00000084   Code   RO         1639    i.TIM_OC3_SetConfig  stm32f0xx_hal_tim.o
+    0x0800387c   0x0800387c   0x0000006c   Code   RO         1640    i.TIM_OC4_SetConfig  stm32f0xx_hal_tim.o
+    0x080038e8   0x080038e8   0x00000022   Code   RO         1642    i.TIM_TI1_ConfigInputStage  stm32f0xx_hal_tim.o
+    0x0800390a   0x0800390a   0x00000026   Code   RO         1644    i.TIM_TI2_ConfigInputStage  stm32f0xx_hal_tim.o
+    0x08003930   0x08003930   0x000000ca   Code   RO         2457    i.UART_AdvFeatureConfig  stm32f0xx_hal_uart.o
+    0x080039fa   0x080039fa   0x00000002   PAD
+    0x080039fc   0x080039fc   0x00000068   Code   RO         2458    i.UART_CheckIdleState  stm32f0xx_hal_uart.o
+    0x08003a64   0x08003a64   0x00000014   Code   RO         2459    i.UART_DMAAbortOnError  stm32f0xx_hal_uart.o
+    0x08003a78   0x08003a78   0x0000004a   Code   RO         2460    i.UART_DMAError     stm32f0xx_hal_uart.o
+    0x08003ac2   0x08003ac2   0x00000040   Code   RO         2461    i.UART_DMAReceiveCplt  stm32f0xx_hal_uart.o
+    0x08003b02   0x08003b02   0x0000000a   Code   RO         2463    i.UART_DMARxHalfCplt  stm32f0xx_hal_uart.o
+    0x08003b0c   0x08003b0c   0x00000030   Code   RO         2465    i.UART_DMATransmitCplt  stm32f0xx_hal_uart.o
+    0x08003b3c   0x08003b3c   0x0000000a   Code   RO         2467    i.UART_DMATxHalfCplt  stm32f0xx_hal_uart.o
+    0x08003b46   0x08003b46   0x0000001e   Code   RO         2469    i.UART_EndRxTransfer  stm32f0xx_hal_uart.o
+    0x08003b64   0x08003b64   0x0000001a   Code   RO         2470    i.UART_EndTransmit_IT  stm32f0xx_hal_uart.o
+    0x08003b7e   0x08003b7e   0x00000012   Code   RO         2471    i.UART_EndTxTransfer  stm32f0xx_hal_uart.o
+    0x08003b90   0x08003b90   0x0000007a   Code   RO         2472    i.UART_Receive_IT   stm32f0xx_hal_uart.o
+    0x08003c0a   0x08003c0a   0x00000002   PAD
+    0x08003c0c   0x08003c0c   0x00000130   Code   RO         2473    i.UART_SetConfig    stm32f0xx_hal_uart.o
+    0x08003d3c   0x08003d3c   0x00000066   Code   RO         2474    i.UART_Transmit_IT  stm32f0xx_hal_uart.o
+    0x08003da2   0x08003da2   0x00000062   Code   RO         2475    i.UART_WaitOnFlagUntilTimeout  stm32f0xx_hal_uart.o
+    0x08003e04   0x08003e04   0x00000010   Code   RO         1255    i.USART1_IRQHandler  stm32f0xx_it.o
+    0x08003e14   0x08003e14   0x0000002e   Code   RO         4231    i.__ARM_clz         mf_p.l(depilogue.o)
+    0x08003e42   0x08003e42   0x0000001a   Code   RO           74    i.__ARM_common_switch8  application.o
+    0x08003e5c   0x08003e5c   0x0000000e   Code   RO         4237    i.__scatterload_copy  mc_p.l(handlers.o)
+    0x08003e6a   0x08003e6a   0x00000002   Code   RO         4238    i.__scatterload_null  mc_p.l(handlers.o)
+    0x08003e6c   0x08003e6c   0x0000000e   Code   RO         4239    i.__scatterload_zeroinit  mc_p.l(handlers.o)
+    0x08003e7a   0x08003e7a   0x00000002   PAD
+    0x08003e7c   0x08003e7c   0x00000028   Code   RO           17    i.all_contactors_updated  application.o
+    0x08003ea4   0x08003ea4   0x0000012a   Code   RO          567    i.auto_calibration  measurement.o
+    0x08003fce   0x08003fce   0x00000002   PAD
+    0x08003fd0   0x08003fd0   0x00000040   Code   RO          247    i.auto_operation    auto_mode.o
+    0x08004010   0x08004010   0x00000054   Code   RO          248    i.calculate_array_of_currents  auto_mode.o
+    0x08004064   0x08004064   0x000000ac   Code   RO          568    i.calculate_average_for_display  measurement.o
+    0x08004110   0x08004110   0x00000028   Code   RO          249    i.calculate_difference_array  auto_mode.o
+    0x08004138   0x08004138   0x00000044   Code   RO          250    i.calculate_possible_probabilities  auto_mode.o
+    0x0800417c   0x0800417c   0x00000044   Code   RO          251    i.calculate_process_begin_end  auto_mode.o
+    0x080041c0   0x080041c0   0x00000024   Code   RO          937    i.calculate_total_capacity  capacity_measurement.o
+    0x080041e4   0x080041e4   0x00000010   Code   RO          940    i.capacity_start_calculations  capacity_measurement.o
+    0x080041f4   0x080041f4   0x0000003c   Code   RO          252    i.check_end_voltage_limitation  auto_mode.o
+    0x08004230   0x08004230   0x000000a8   Code   RO          253    i.check_input_current_limits  auto_mode.o
+    0x080042d8   0x080042d8   0x0000005c   Code   RO          254    i.determine_pwm_value  auto_mode.o
+    0x08004334   0x08004334   0x0000004c   Code   RO          813    i.display_measure_history  measurement_history.o
+    0x08004380   0x08004380   0x00000054   Code   RO          255    i.find_best_choice  auto_mode.o
+    0x080043d4   0x080043d4   0x000000b0   Code   RO          390    i.firing            firing.o
+    0x08004484   0x08004484   0x00000090   Code   RO          506    i.flashing_registeration  hmi_handler.o
+    0x08004514   0x08004514   0x00000034   Code   RO          942    i.get_capacity_and_stop_calculations  capacity_measurement.o
+    0x08004548   0x08004548   0x00000040   Code   RO          256    i.initiate_multiset_point_mode  auto_mode.o
+    0x08004588   0x08004588   0x00000054   Code   RO         1039    i.main              main.o
+    0x080045dc   0x080045dc   0x0000004c   Code   RO          569    i.measure_10_msec   measurement.o
+    0x08004628   0x08004628   0x00000028   Code   RO          570    i.measure_start_dma_adc  measurement.o
+    0x08004650   0x08004650   0x00000040   Code   RO          571    i.measure_timer_it  measurement.o
+    0x08004690   0x08004690   0x00000174   Code   RO          257    i.multi_set_point_operation  auto_mode.o
+    0x08004804   0x08004804   0x00000030   Code   RO          258    i.on_the_suitable_steps  auto_mode.o
+    0x08004834   0x08004834   0x0000002c   Code   RO          718    i.read_next_address_without_dequeue  queue_dgus_rx.o
+    0x08004860   0x08004860   0x00000024   Code   RO          507    i.refresh_hmi_screen_while_unpushed  hmi_handler.o
+    0x08004884   0x08004884   0x0000000a   Code   RO          259    i.replace           auto_mode.o
+    0x0800488e   0x0800488e   0x00000002   PAD
+    0x08004890   0x08004890   0x0000001c   Code   RO           18    i.search_if_any_step_on  application.o
+    0x080048ac   0x080048ac   0x00000080   Code   RO          719    i.search_on_queue   queue_dgus_rx.o
+    0x0800492c   0x0800492c   0x00000124   Code   RO          437    i.send_tx_queue_hmi_communication  hmi_communication.o
+    0x08004a50   0x08004a50   0x0000000c   Code   RO          769    i.set_half_sec_counter  time_handler.o
+    0x08004a5c   0x08004a5c   0x00000018   Code   RO          438    i.start_hmi_uart    hmi_communication.o
+    0x08004a74   0x08004a74   0x000000dc   Code   RO          261    i.update_operation  auto_mode.o
+    0x08004b50   0x08004b50   0x00000094   Code   RO           19    i.update_steps_and_pwm  application.o
+    0x08004be4   0x08004be4   0x00000010   Data   RO         4119    .constdata          system_stm32f0xx.o
+    0x08004bf4   0x08004bf4   0x00000008   Data   RO         4120    .constdata          system_stm32f0xx.o
+    0x08004bfc   0x08004bfc   0x00000020   Data   RO         4235    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004b4c, Size: 0x000015c0, Max: 0x00002000, ABSOLUTE, COMPRESSED[0x000000d4])
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08004c1c, Size: 0x000016f8, Max: 0x00002000, ABSOLUTE, COMPRESSED[0x000000d8])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000000   COMPRESSED   0x00000018   Data   RW           20    .data               application.o
     0x20000018   COMPRESSED   0x00000050   Data   RW          223    .data               arrays_calibration_firing.o
     0x20000068   COMPRESSED   0x00000050   Data   RW          224    .data               arrays_calibration_firing.o
-    0x200000b8   COMPRESSED   0x00000068   Data   RW          263    .data               auto_mode.o
-    0x20000120   COMPRESSED   0x00000001   Data   RW          266    .data               auto_mode.o
-    0x20000121   COMPRESSED   0x00000001   Data   RW          267    .data               auto_mode.o
-    0x20000122   COMPRESSED   0x00000006   Data   RW          388    .data               firing.o
-    0x20000128   COMPRESSED   0x0000003b   Data   RW          438    .data               hmi_communication.o
-    0x20000163   COMPRESSED   0x00000001   Data   RW          441    .data               hmi_communication.o
-    0x20000164   COMPRESSED   0x0000002c   Data   RW          507    .data               hmi_handler.o
-    0x20000190   COMPRESSED   0x00000030   Data   RW          573    .data               measurement.o
-    0x200001c0   COMPRESSED   0x00000010   Data   RW          718    .data               queue_dgus_rx.o
-    0x200001d0   COMPRESSED   0x00000014   Data   RW          767    .data               time_handler.o
-    0x200001e4   COMPRESSED   0x00000006   Data   RW          812    .data               measurement_history.o
-    0x200001ea   COMPRESSED   0x00000002   PAD
-    0x200001ec   COMPRESSED   0x00000010   Data   RW          873    .data               time_based_table_operation.o
-    0x200001fc   COMPRESSED   0x00000004   Data   RW         2964    .data               stm32f0xx_hal.o
-    0x20000200   COMPRESSED   0x00000004   Data   RW         4121    .data               system_stm32f0xx.o
-    0x20000204        -       0x000006b0   Zero   RW          262    .bss                auto_mode.o
-    0x200008b4        -       0x0000007c   Zero   RW          436    .bss                hmi_communication.o
-    0x20000930        -       0x00000126   Zero   RW          505    .bss                hmi_handler.o
-    0x20000a56        -       0x00000040   Zero   RW          506    .bss                hmi_handler.o
-    0x20000a96   COMPRESSED   0x00000002   PAD
-    0x20000a98        -       0x00000090   Zero   RW          571    .bss                measurement.o
-    0x20000b28        -       0x00000038   Zero   RW          651    .bss                pid.o
-    0x20000b60        -       0x00000328   Zero   RW          717    .bss                queue_dgus_rx.o
-    0x20000e88        -       0x00000120   Zero   RW          811    .bss                measurement_history.o
-    0x20000fa8        -       0x0000000a   Zero   RW          872    .bss                time_based_table_operation.o
-    0x20000fb2   COMPRESSED   0x00000002   PAD
-    0x20000fb4        -       0x00000090   Zero   RW         1103    .bss                adc.o
-    0x20001044        -       0x00000080   Zero   RW         1163    .bss                tim.o
-    0x200010c4        -       0x000000f8   Zero   RW         1211    .bss                usart.o
-    0x200011bc   COMPRESSED   0x00000004   PAD
-    0x200011c0        -       0x00000400   Zero   RW            1    STACK               startup_stm32f051x8.o
+    0x200000b8   COMPRESSED   0x00000070   Data   RW          264    .data               auto_mode.o
+    0x20000128   COMPRESSED   0x00000006   Data   RW          391    .data               firing.o
+    0x2000012e   COMPRESSED   0x00000002   PAD
+    0x20000130   COMPRESSED   0x0000003b   Data   RW          441    .data               hmi_communication.o
+    0x2000016b   COMPRESSED   0x00000001   Data   RW          444    .data               hmi_communication.o
+    0x2000016c   COMPRESSED   0x0000002c   Data   RW          510    .data               hmi_handler.o
+    0x20000198   COMPRESSED   0x00000030   Data   RW          576    .data               measurement.o
+    0x200001c8   COMPRESSED   0x00000010   Data   RW          721    .data               queue_dgus_rx.o
+    0x200001d8   COMPRESSED   0x00000014   Data   RW          770    .data               time_handler.o
+    0x200001ec   COMPRESSED   0x00000006   Data   RW          815    .data               measurement_history.o
+    0x200001f2   COMPRESSED   0x00000002   PAD
+    0x200001f4   COMPRESSED   0x00000010   Data   RW          876    .data               time_based_table_operation.o
+    0x20000204   COMPRESSED   0x00000010   Data   RW          945    .data               capacity_measurement.o
+    0x20000214   COMPRESSED   0x00000004   Data   RW         2964    .data               stm32f0xx_hal.o
+    0x20000218   COMPRESSED   0x00000004   Data   RW         4121    .data               system_stm32f0xx.o
+    0x2000021c        -       0x000007d0   Zero   RW          262    .bss                auto_mode.o
+    0x200009ec        -       0x0000007c   Zero   RW          439    .bss                hmi_communication.o
+    0x20000a68        -       0x00000126   Zero   RW          508    .bss                hmi_handler.o
+    0x20000b8e        -       0x00000040   Zero   RW          509    .bss                hmi_handler.o
+    0x20000bce   COMPRESSED   0x00000002   PAD
+    0x20000bd0        -       0x00000090   Zero   RW          574    .bss                measurement.o
+    0x20000c60        -       0x00000038   Zero   RW          654    .bss                pid.o
+    0x20000c98        -       0x00000328   Zero   RW          720    .bss                queue_dgus_rx.o
+    0x20000fc0        -       0x00000120   Zero   RW          814    .bss                measurement_history.o
+    0x200010e0        -       0x0000000a   Zero   RW          875    .bss                time_based_table_operation.o
+    0x200010ea   COMPRESSED   0x00000002   PAD
+    0x200010ec        -       0x00000090   Zero   RW         1103    .bss                adc.o
+    0x2000117c        -       0x00000080   Zero   RW         1163    .bss                tim.o
+    0x200011fc        -       0x000000f8   Zero   RW         1211    .bss                usart.o
+    0x200012f4   COMPRESSED   0x00000004   PAD
+    0x200012f8        -       0x00000400   Zero   RW            1    STACK               startup_stm32f051x8.o
 
 
 ==============================================================================
@@ -2651,45 +2663,46 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       304         30          0          0        144       1680   adc.o
-       938        164          0         24          0     331083   application.o
-         0          0          0        160          0        975   arrays_calibration_firing.o
-      1366        142          0        106       1712      11990   auto_mode.o
-        56          4          0          0          0        698   dma.o
-       208         46          0          6          0       2679   firing.o
-       256         26          0          0          0        947   gpio.o
-       620         54          0         60        124       5663   hmi_communication.o
-       800        116          0         44        358       5511   hmi_handler.o
-       178          4          0          0          0       2074   main.o
-      1002         86          0         48        144       7619   measurement.o
-       180         20          0          6        288       3001   measurement_history.o
-       226          0          0          0         56       1861   pid.o
-       400         42          0         16        808       4466   queue_dgus_rx.o
-        28          8        188          0       1024        616   startup_stm32f051x8.o
-       122         18          0          4          0       3531   stm32f0xx_hal.o
-      1322         52          0          0          0       8182   stm32f0xx_hal_adc.o
-       176          0          0          0          0       1358   stm32f0xx_hal_adc_ex.o
-       144         24          0          0          0       8825   stm32f0xx_hal_cortex.o
-       498         14          0          0          0       4726   stm32f0xx_hal_dma.o
-       350         26          0          0          0       2811   stm32f0xx_hal_gpio.o
-        40          6          0          0          0        774   stm32f0xx_hal_msp.o
-      1316         94          0          0          0       4925   stm32f0xx_hal_rcc.o
-       248         12          0          0          0       1352   stm32f0xx_hal_rcc_ex.o
-      1916        132          0          0          0      15853   stm32f0xx_hal_tim.o
-       172          0          0          0          0       3046   stm32f0xx_hal_tim_ex.o
-      1972         64          0          0          0      15612   stm32f0xx_hal_uart.o
-         2          0          0          0          0        952   stm32f0xx_hal_uart_ex.o
-       104         32          0          0          0       4232   stm32f0xx_it.o
-        92         14         24          4          0       1099   system_stm32f0xx.o
-       484         48          0          0        128       2929   tim.o
-       252         46          0         16         10       4776   time_based_table_operation.o
-       364         44          0         20          0       3461   time_handler.o
-       264         30          0          0        248       1712   usart.o
+       304         30          0          0        144       1728   adc.o
+       938        164          0         24          0     331391   application.o
+         0          0          0        160          0       1007   arrays_calibration_firing.o
+      1442        138          0        112       2000      12694   auto_mode.o
+       104         12          0         16          0       2146   capacity_measurement.o
+        56          4          0          0          0        726   dma.o
+       208         46          0          6          0       2735   firing.o
+       256         26          0          0          0        979   gpio.o
+       620         54          0         60        124       5771   hmi_communication.o
+       816        118          0         44        358       5686   hmi_handler.o
+       178          4          0          0          0       2130   main.o
+      1002         86          0         48        144       7743   measurement.o
+       180         20          0          6        288       3061   measurement_history.o
+       226          0          0          0         56       1917   pid.o
+       400         42          0         16        808       4574   queue_dgus_rx.o
+        28          8        188          0       1024        632   startup_stm32f051x8.o
+       122         18          0          4          0       3623   stm32f0xx_hal.o
+      1322         52          0          0          0       8350   stm32f0xx_hal_adc.o
+       176          0          0          0          0       1382   stm32f0xx_hal_adc_ex.o
+       144         24          0          0          0       8901   stm32f0xx_hal_cortex.o
+       498         14          0          0          0       4814   stm32f0xx_hal_dma.o
+       350         26          0          0          0       2867   stm32f0xx_hal_gpio.o
+        40          6          0          0          0        802   stm32f0xx_hal_msp.o
+      1316         94          0          0          0       5009   stm32f0xx_hal_rcc.o
+       248         12          0          0          0       1380   stm32f0xx_hal_rcc_ex.o
+      1916        132          0          0          0      16217   stm32f0xx_hal_tim.o
+       172          0          0          0          0       3114   stm32f0xx_hal_tim_ex.o
+      1972         64          0          0          0      15940   stm32f0xx_hal_uart.o
+         2          0          0          0          0        984   stm32f0xx_hal_uart_ex.o
+       104         32          0          0          0       4372   stm32f0xx_it.o
+        92         14         24          4          0       1135   system_stm32f0xx.o
+       484         48          0          0        128       3017   tim.o
+       264         48          0         16         10       4912   time_based_table_operation.o
+       364         44          0         20          0       3529   time_handler.o
+       264         30          0          0        248       1772   usart.o
 
     ----------------------------------------------------------------------
-     16434       1398        244        516       5052     471019   Object Totals
+     16642       1410        244        540       5340     477040   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        34          0          0          2          8          0   (incl. Padding)
+        34          0          0          4          8          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -2760,15 +2773,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     19032       1466        244        516       5052     464947   Grand Totals
-     19032       1466        244        212       5052     464947   ELF Image Totals (compressed)
-     19032       1466        244        212          0          0   ROM Totals
+     19240       1478        244        540       5340     470836   Grand Totals
+     19240       1478        244        216       5340     470836   ELF Image Totals (compressed)
+     19240       1478        244        216          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                19276 (  18.82kB)
-    Total RW  Size (RW Data + ZI Data)              5568 (   5.44kB)
-    Total ROM Size (Code + RO Data + RW Data)      19488 (  19.03kB)
+    Total RO  Size (Code + RO Data)                19484 (  19.03kB)
+    Total RW  Size (RW Data + ZI Data)              5880 (   5.74kB)
+    Total ROM Size (Code + RO Data + RW Data)      19700 (  19.24kB)
 
 ==============================================================================
 

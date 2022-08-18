@@ -106,7 +106,7 @@ void refresh_hmi_screen_while_unpushed(void);
 #define insert_data_from_sd_card_in_auto_mode_ADDRESS					0XDD
 #define insert_data_using_hmi_screen_in_auto_mode_ADDRESS			0XDE
 
-#define sd_card_start_process_number_address									0XDF
+#define sd_card_USER_PROCESS_BEGINING_ADDRESS									0XDF
 
 
 

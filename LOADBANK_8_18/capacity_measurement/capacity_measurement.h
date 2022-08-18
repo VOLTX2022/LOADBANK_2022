@@ -14,7 +14,7 @@ void capacity_start_calculations(void);
 
 void calculate_capacity(void);
 
-uint32_t get_capacity(void);
+uint32_t get_capacity_and_stop_calculations(void);
 
 void capacity_pause_calculations(void);
 
